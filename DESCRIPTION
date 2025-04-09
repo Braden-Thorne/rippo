@@ -1,10 +1,13 @@
 Package: rippo
-Title: What the Package Does (One Line, Title Case)
+Title: Creates Content Suitable for Inclusion in AAGI IPPO Tables 2 and 3 
 Version: 0.0.0.9000
 Authors@R: c(
  .
-     )
-Description: What the package does (one paragraph).
+        )
+Description: Checks a project directory and creates a CSV file suitable for
+  inclusion in an AAGI IPPO Table 3. The CSV file contains a list of all R 
+  packages used in the project, including their version numbers and licences along 
+  with the the AAGIQuarto template information if requested.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -12,3 +15,8 @@ RoxygenNote: 7.3.2
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+URL: https://github.com/adamhsparks/rippo
+BugReports: https://github.com/adamhsparks/rippo/issues
+Imports: 
+    funspotr,
+    withr

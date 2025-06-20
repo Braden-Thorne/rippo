@@ -34,4 +34,12 @@ collate_ippo <- function(dir_path_in, dir_path_out) {
     cli::cli_warn("{.var dir_path_out} does not exist; it will be created")
     fs::dir_create(dir_path_out)
   }
+
+  # create a list of completed projects that are no longer actively supported
+  completed <- fs::dir_ls(path(dir_path_in, "02 Archived Completed"))
+
+  # create a list of active projects and filter out non-proj dirs
+  active <- fs::dir_ls(path(dir_path_in))
+  active <- active[!grepl("^\\d{2}.*", active)]
+  active <- active[active %notin% c("AAGI student files", "AAGI_informatics")]
 }

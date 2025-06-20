@@ -1,22 +1,28 @@
 Package: rippo
-Title: Creates Content Suitable for Inclusion in AAGI IPPO Tables 2 and 3 
+Title: Simplify AAGI-CU IPPO Register Updates
 Version: 0.0.0.9000
 Authors@R: c(
- .
-        )
-Description: Checks a project directory and creates a CSV file suitable for
-  inclusion in an AAGI IPPO Table 3. The CSV file contains a list of all R 
-  packages used in the project, including their version numbers and licences along 
-  with the the AAGIQuarto template information if requested.
+    person("Adam H.", "Sparks", , "adam.sparks@curtin.edu.au", role = c("cre", "aut"),
+           comment = c(ORCID = "0000-0002-0061-8359")),
+    person("Zhanglong", "Cao", , "zhanglong.cao@curtin.edu.au", role = "aut",
+           comment = c("Wrote original `create_table_3()`.", ORCID = "0000-0001-6667-9392")),
+    person("Curtin University of Technology", role = "cph",
+           comment = "Provided support through Adam Sparks's time."),
+    person("Grains Research and Development Corporation", role = c("fnd", "cph"),
+           comment = "GRDC Project CUR2210-005OPX (AAGI-CU)")
+  )
+Description: Provides functions to help streamline AAGI-CU IPPO registry
+    creation and reporting.
 License: MIT + file LICENSE
-Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+URL: https://github.com/AAGI-AUS/rippo
+BugReports: https://github.com/AAGI-AUS/rippo/issues
+Imports:
+    cli,
+    funspotr,
+    withr
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
-URL: https://github.com/adamhsparks/rippo
-BugReports: https://github.com/adamhsparks/rippo/issues
-Imports: 
-    funspotr,
-    withr
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2.9000

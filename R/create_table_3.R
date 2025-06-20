@@ -5,7 +5,7 @@
 #'  subfolders.
 #' @param file_path The path to the directory where the table will be saved,
 #'  defaults to the project's "1 Documentation" directory.
-#' @param quarto Logical, whether to site the \acronym{AAGI} Quarto template.
+#' @param quarto Logical, whether to cite the \acronym{AAGI} Quarto template.
 #' Defaults to `FALSE`.
 #'
 #' @examples
@@ -18,13 +18,14 @@
 #' Sparks, \email{adam.sparks@@curtin.edu.au}
 
 create_table_3 <- function(
-    project_path = getwd(),
-    file_path = "1 Documentation",
-    quarto = FALSE,
-    digger = FALSE) {
+  project_path = getwd(),
+  file_path = "1 Documentation",
+  quarto = FALSE,
+  digger = FALSE
+) {
   # Check if the path is a valid directory
   if (!dir.exists(project_path)) {
-    stop("The specified path does not exist.")
+    cli::cli_abort("The specified path does not exist.")
   }
 
   # Set the working directory to the specified path

@@ -74,4 +74,48 @@ collate_ippo <- function(dir_path_in, dir_path_out) {
     replacement = "Completed - ",
     x = project_names
   )
+  names(merged) <- project_names
+
+  has_ippo <- merged[grep(".xlsx", merged)]
+  no_ippo <- names(merged[names(merged) %notin% names(has_ippo)])
+
+  table_1 <- lapply(
+    X = has_ippo,
+    FUN = readxl::read_excel,
+    sheet = 2L,
+    col_types = c("numeric", "text", "text", "date", "text")
+  )
+  table_2 <- lapply(
+    X = has_ippo,
+    FUN = readxl::read_excel,
+    sheet = 3L,
+    col_types = c("numeric", "text", "text", "date", "text")
+  )
+  table_3 <- lapply(
+    X = has_ippo,
+    FUN = readxl::read_excel,
+    sheet = 4L,
+    col_types = c(
+      "numeric",
+      "text",
+      "text",
+      "text",
+      "date",
+      "text",
+      "text",
+      "text"
+    )
+  )
+  table_4 <- lapply(
+    X = has_ippo,
+    FUN = readxl::read_excel,
+    sheet = 5L,
+    col_types = c("numeric", "text", "text", "date", "text", "text")
+  )
+  table_5 <- lapply(
+    X = has_ippo,
+    FUN = readxl::read_excel,
+    sheet = 6L,
+    col_types = c("numeric", "text", "text", "date", "text", "text")
+  )
 }

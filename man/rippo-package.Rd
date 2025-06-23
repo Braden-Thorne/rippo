@@ -6,7 +6,7 @@
 \alias{rippo-package}
 \title{rippo: Simplify AAGI-CU IPPO Register Updates}
 \description{
-Checks a project directory and creates a CSV file suitable for inclusion in an AAGI IPPO Table 3. The CSV file contains a list of all R packages used in the project, including their version numbers and licences along with the the AAGIQuarto template information if requested.
+Helper functions that ease preparing the AAGI-CU IPPO register.
 }
 \seealso{
 Useful links:

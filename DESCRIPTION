@@ -11,19 +11,18 @@ Authors@R: c(
     person("Grains Research and Development Corporation", role = c("fnd", "cph"),
            comment = "GRDC Project CUR2210-005OPX (AAGI-CU)")
   )
-Description: Checks a project directory and creates a CSV file suitable
-    for inclusion in an AAGI IPPO Table 3. The CSV file contains a list of
-    all R packages used in the project, including their version numbers
-    and licences along with the the AAGIQuarto template information if
-    requested.
+Description: Helper functions that ease preparing the AAGI-CU IPPO register.
 License: MIT + file LICENSE
 URL: https://github.com/AAGI-AUS/rippo
 BugReports: https://github.com/AAGI-AUS/rippo/issues
 Imports:
     cli,
+    data.table,
+    flextable,
     fs,
     funspotr,
     readxl,
+    officer,
     tibble,
     withr
 Suggests: 

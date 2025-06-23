@@ -24,7 +24,7 @@ collates them into a single unified reporting format.
 \dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
  # for macOS
  library(fs)
- R_drive <- "/Volumes/0-9/AAGI_CCDM_CBADA-GIBBEM-SE21982/",
+ R_drive <- "/Volumes/0-9/AAGI_CCDM_CBADA-GIBBEM-SE21982/"
  collate_ippo(
    dir_path_in = path(R_drive, "Projects"),
    dir_path_out = path(R_drive, "Reports")

@@ -21,6 +21,7 @@ URL: https://github.com/AAGI-AUS/rippo
 BugReports: https://github.com/AAGI-AUS/rippo/issues
 Imports:
     cli,
+    data.table,
     fs,
     funspotr,
     readxl,

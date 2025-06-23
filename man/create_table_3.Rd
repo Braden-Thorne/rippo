@@ -16,15 +16,18 @@ create_table_3(
 tables for, defaults to the current working directory and recurses into
 subfolders.}
 
-\item{file_path}{The path to the directory where the table will be saved,
-defaults to the project's "1 Documentation" directory.}
+\item{file_path}{Character string that provides the file path to the
+directory where the table will be saved. Defaults to the current project's
+\dQuote{1 Documentation} directory.}
 
-\item{quarto}{Logical, whether to cite the \acronym{AAGI} Quarto template.
-Defaults to \code{FALSE}.}
+\item{quarto}{Boolean cite the \acronym{AAGI} Quarto template? Defaults to
+\code{FALSE}.}
+
+\item{digger}{Boolean cite the \pkg{DiGGer} package? Defaults to \code{FALSE}.}
 }
 \value{
-nothing, called for its side effects of writing an Excel file to disk
-for inclusion in the IPPO document spreadsheet.
+An invisible `NULL, called for its side effects of writing an Excel
+workbook file to disk for inclusion in the IPPO document workbook.
 }
 \description{
 Create a Table of Third Party IP (Table 3) of the R Packages and Quarto Template Used for an AAGI IPPO Document

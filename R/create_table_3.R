@@ -14,8 +14,8 @@
 #' @examples
 #' create_table_3()
 #'
-#' @return An invisible `NULL, called for its side effects of writing an Excel
-#'  workbook file to disk for inclusion in the IPPO document workbook.
+#' @return An invisible `NULL, called for its side effects of writing a sheet
+#'  into an Excel workbook file (the project's IPPO register) on the local disk.
 #'
 #' @author Zhanglong Cao, \email{zhanglong.cao@@curtin.edu.au} and Adam H.
 #' Sparks, \email{adam.sparks@@curtin.edu.au}
@@ -34,10 +34,10 @@ create_table_3 <- function(
   # Set the working directory to the specified path
   withr::with_dir(project_path)
 
-  pkgs <- funspotr::spot_pkgs_files(
+  pkgs <- tibble::as_tibble(funspotr::spot_pkgs_files(
     path = project_path,
     .progress = TRUE
-  )
+  ))
 
   if (digger) {
     digger <- tibble::tibble(

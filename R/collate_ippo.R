@@ -14,7 +14,7 @@
 #' @examplesIf interactive()
 #'  # for macOS
 #'  library(fs)
-#'  R_drive <- "/Volumes/0-9/AAGI_CCDM_CBADA-GIBBEM-SE21982/",
+#'  R_drive <- "/Volumes/0-9/AAGI_CCDM_CBADA-GIBBEM-SE21982/"
 #'  collate_ippo(
 #'    dir_path_in = path(R_drive, "Projects"),
 #'    dir_path_out = path(R_drive, "Reports")
@@ -40,6 +40,38 @@ collate_ippo <- function(dir_path_in, dir_path_out) {
 
   # create a list of active projects and filter out non-proj dirs
   active <- fs::dir_ls(path(dir_path_in))
-  active <- active[!grepl("^\\d{2}.*", active)]
-  active <- active[active %notin% c("AAGI student files", "AAGI_informatics")]
+  active <- active[!grepl("Projects/\\d{2} ", active)]
+  active <- active[!grepl("Projects/AAGI", active, fixed = TRUE)]
+  active <- active[!grepl("Projects/RiskWise Program", active, fixed = TRUE)]
+
+  # point to the IPPO registers
+  ippo_paths <- paste0(c(completed, active), "/1 Documentation/")
+  ippo_registers <- lapply(
+    X = ippo_paths,
+    FUN = fs::dir_ls,
+    regexp = "AAGI-CU-.*IPPO.*\\.xlsx$"
+  )
+
+  merged <- Map(
+    function(x, y) if (length(x) == 0L) y else x,
+    ippo_registers,
+    ippo_paths
+  )
+
+  # Regular expression pattern
+  pattern <- "(?<=/Projects/).*?(?=/1 Documentation/)"
+
+  # Apply regex using vapply
+  project_names <- vapply(
+    merged,
+    function(x) {
+      regmatches(x, regexpr(pattern, x, perl = TRUE))
+    },
+    character(1L)
+  )
+  project_names <- gsub(
+    pattern = "02 Archived Completed/",
+    replacement = "Completed - ",
+    x = project_names
+  )
 }

@@ -26,8 +26,8 @@ directory where the table will be saved. Defaults to the current project's
 \item{digger}{Boolean cite the \pkg{DiGGer} package? Defaults to \code{FALSE}.}
 }
 \value{
-An invisible `NULL, called for its side effects of writing an Excel
-workbook file to disk for inclusion in the IPPO document workbook.
+An invisible `NULL, called for its side effects of writing a sheet
+into an Excel workbook file (the project's IPPO register) on the local disk.
 }
 \description{
 Create a Table of Third Party IP (Table 3) of the R Packages and Quarto Template Used for an AAGI IPPO Document

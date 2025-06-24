@@ -126,4 +126,6 @@ create_ippo_tables <- function(dir_path_in, dir_path_out) {
     FUN = purrr::list_rbind,
     names_to = "Project Code"
   )
+
+  return(list("tables" = tables, "No_IPPO" = no_ippo))
 }

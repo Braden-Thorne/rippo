@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_table_3.R
 \name{create_table_3}
 \alias{create_table_3}
-\title{Create a Table of Third Party IP (Table 3) of the R Packages and Quarto Template Used for an AAGI IPPO Document}
+\title{Create a Table of Third Party IP (Table 3) of the R packages and AAGI Quarto template used for an AAGI IPPO document}
 \usage{
 create_table_3(
   project_path = getwd(),
@@ -30,7 +30,7 @@ An invisible `NULL, called for its side effects of writing a sheet
 into an Excel workbook file (the project's IPPO register) on the local disk.
 }
 \description{
-Create a Table of Third Party IP (Table 3) of the R Packages and Quarto Template Used for an AAGI IPPO Document
+Create a Table of Third Party IP (Table 3) of the R packages and AAGI Quarto template used for an AAGI IPPO document
 }
 \examples{
 create_table_3()

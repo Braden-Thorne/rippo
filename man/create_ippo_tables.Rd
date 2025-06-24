@@ -17,7 +17,9 @@ not exist}. The file will be named "AAGI-CU-IPPO Register.docx" by default.
 Any currently existing IPPO register will be overwritten.}
 }
 \value{
-A \code{list} object that contains five \code{\link[tibble:tibble]{tibble::tibble()}} objects.
+A \code{list} object that contains five \code{\link[tibble:tibble]{tibble::tibble()}} objects that
+contain either tables for the IPPO register or a list of projects lacking
+an IPPO register.
 }
 \description{
 Traverses directories and imports IPPO register Excel(TM) workbook files and

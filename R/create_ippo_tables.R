@@ -21,7 +21,9 @@
 #'    dir_path_out = path(R_drive, "Reports")
 #'  )
 #'
-#' @returns A `list` object that contains five [tibble::tibble()] objects.
+#' @returns A `list` object that contains five [tibble::tibble()] objects that
+#'  contain either tables for the IPPO register or a list of projects lacking
+#'  an IPPO register.
 #'
 
 create_ippo_tables <- function(dir_path_in, dir_path_out) {
@@ -116,5 +118,12 @@ create_ippo_tables <- function(dir_path_in, dir_path_out) {
     FUN = readxl::read_excel,
     sheet = 6L,
     col_types = c("numeric", "text", "text", "date", "text", "text")
+  )
+
+  tables <- list(table_1, table_2, table_3, table_4, table_5)
+  tables_out <- lapply(
+    X = tables,
+    FUN = purrr::list_rbind,
+    names_to = "Project Code"
   )
 }

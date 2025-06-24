@@ -1,4 +1,4 @@
-#' Create IPPO Tables List
+#' Create IPPO tables List
 #'
 #' Traverses directories and imports IPPO register Excel(TM) workbook files and
 #'  creates a list of tables corresponding to Tables 1-5 in the \acronym{AAGI}

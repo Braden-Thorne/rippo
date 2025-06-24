@@ -1,7 +1,8 @@
-#' Collate AAGI-CU IPPO register Excel workbooks for reporting
+#' Create IPPO Tables List
 #'
 #' Traverses directories and imports IPPO register Excel(TM) workbook files and
-#'  collates them into a single unified reporting format.
+#'  creates a list of tables corresponding to Tables 1-5 in the \acronym{AAGI}
+#'  \acronym{IPPO} register for all AAGI-CU Service and Support projects.
 #'
 #' @param dir_path_in A string value that provides the path to the top-level
 #'  directory of the R: drive holding the AAGI-CU Service and Support project
@@ -20,12 +21,10 @@
 #'    dir_path_out = path(R_drive, "Reports")
 #'  )
 #'
-#'  @returns Nothing, called for its side-effects of generating an MS Word(TM)
-#'   Document of \acronym{IPPO} details for the purposes of \acronym{AAGI}
-#'   reporting.
+#' @returns A `list` object that contains five [tibble::tibble()] objects.
 #'
 
-collate_ippo <- function(dir_path_in, dir_path_out) {
+create_ippo_tables <- function(dir_path_in, dir_path_out) {
   if (isFALSE(fs::dir_exists(dir_path_in))) {
     cli::cli_abort("{.var dir_path_in} does not exist; cannot proceed")
   }

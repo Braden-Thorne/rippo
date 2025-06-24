@@ -1,4 +1,4 @@
-#' Create a Table of Third Party IP (Table 3) of the R Packages and Quarto Template Used for an AAGI IPPO Document
+#' Create a Table of Third Party IP (Table 3) of the R packages and AAGI Quarto template used for an AAGI IPPO document
 #'
 #' @param project_path The path to the directory of the project to generate the
 #'  tables for, defaults to the current working directory and recurses into

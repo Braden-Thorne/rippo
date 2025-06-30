@@ -3,3 +3,4 @@
 ^man/dot-filter_list\.Rd$
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^CODE_OF_CONDUCT\.md$

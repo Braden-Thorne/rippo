@@ -173,14 +173,20 @@ ui <- page_sidebar(
     helpText(
       "Create IPPO registries by entering information into this app."
     ),
-    textInput(
-      "load_path",
-      label="Enter a path to an existing IPPO to import its entries.",
-      value="App_backend/example.xlsx"
-    ),
-    actionButton(
+    # textInput(
+    #   "load_path",
+    #   label="Enter a path to an existing IPPO to import its entries.",
+    #   value="App_backend/example.xlsx"
+    # ),
+    # actionButton(
+    #   "load_data",
+    #   label="Load IPPO"
+    # ),
+    fileInput(
       "load_data",
-      label="Load IPPO"
+      label = "Load an existing IPPO",
+      multiple = FALSE,
+      accept = c(".xlsx")
     ),
     textInput(
       "code",
@@ -203,10 +209,7 @@ ui <- page_sidebar(
       ),
       selected = "1-3 Background IP"
     ),
-    actionButton(
-      "save_data",
-      label="Save Excel"
-    )#,
+    downloadButton("download_IPPO", "Download")#,
     # actionButton(
     #   "debug",
     #   label="View databases"
@@ -740,30 +743,6 @@ server <- function(input, output, session) {
     }
   })
   
-  observeEvent(input$save_data, {
-    if (file.exists(paste("Outputs/AAGI-CU-", input$code, " - Support and Services IPPO Registrer.xlsx", sep=""))){
-      sendSweetAlert(
-        session = session,
-        title = "Failure",
-        text = "File for the provided project code already exists. Please move or delete the file before saving.",
-        type = "error"
-      )
-    } else{
-      send_to_excel(
-        db_BIP(), db_OUT(), db_USED_IN(), db_SEN(),
-        paste("Outputs/AAGI-CU-", input$code, " - Support and Services IPPO Registrer.xlsx", sep="")
-      )
-      
-      sendSweetAlert(
-        session = session,
-        title = "Success",
-        text = "File saved successfully!",
-        type = "success"
-      )
-    }
-    
-  })
-  
   observeEvent(input$add_entry_existing, {
     if (input$radio == 1) {
       for (entry in input$existingBoxes_t1){
@@ -840,169 +819,153 @@ server <- function(input, output, session) {
   })
   
   observeEvent(input$load_data, {
-    if (file.exists(input$load_path)){
-      loaded_file <- loadWorkbook(input$load_path)
-
-      t1_loaded_data <- read.xlsx(loaded_file, sheet=2, startRow=2, colNames=FALSE, skipEmptyCols = FALSE)
-      t2_loaded_data <- read.xlsx(loaded_file, sheet=3, startRow=2, colNames=FALSE, skipEmptyCols = FALSE)
-      
-      for (i in 1:nrow(t1_loaded_data)){
-        if (!(t1_loaded_data[i,3] %in% db_BIP()[["BIP_Description"]])){
-          if (t1_loaded_data[i,3] %in% db_REF$Description){
-            curr_selection <- db_REF[db_REF$Description == t1_loaded_data[i,3],]
-            db_BIP(db_BIP() |> add_row(
-              Table1 = T, Table2 = curr_selection$Table2, Table3 = F,
-              BIP_Name = curr_selection$Name,
-              BIP_Code = curr_selection$Code,
-              BIP_Description = curr_selection$Description,
-              BIP_Date = as.Date("18/07/2023", format="%d/%m/%Y"), # Until stated otherwise, I'm going to assume they are available since AAGI inception.
-              BIP_Licence = curr_selection$Restrictions,
-              BIP_Owner = "",
-              BIP_Provider = "",
-              BIP_Restrictions = curr_selection$Restrictions
-            ))
-          } else {
-            db_BIP(db_BIP() |> add_row(
-              Table1 = T, 
-              Table2 = if(t1_loaded_data[i,3] %in% t2_loaded_data[,3]){T}else{F},
-              Table3 = F,
-              BIP_Name = paste(substr(t1_loaded_data[i,3], 1, 40), "...", sep=""),
-              BIP_Code = t1_loaded_data[i,2],
-              BIP_Description = t1_loaded_data[i,3],
-              BIP_Date = as.Date(t1_loaded_data[i,4], origin="1899-12-30"),
-              BIP_Licence = t1_loaded_data[i,5],
-              BIP_Owner = "",
-              BIP_Provider = "",
-              BIP_Restrictions = t1_loaded_data[i,5]
-            ))
-          }
-        }
-      }
-
-      for (i in 1:nrow(t2_loaded_data)){
-        if (!(t2_loaded_data[i,3] %in% db_BIP()[["BIP_Description"]])){
-          if (t2_loaded_data[i,3] %in% db_REF$Description){
-            curr_selection <- db_REF[db_REF$Description == t2_loaded_data[i,3],]
-            db_BIP(db_BIP() |> add_row(
-              Table1 = curr_selection$Table1, Table2 = T, Table3 = F,
-              BIP_Name = curr_selection$Name,
-              BIP_Code = curr_selection$Code,
-              BIP_Description = curr_selection$Description,
-              BIP_Date = as.Date("18/07/2023", format="%d/%m/%Y"), # Until stated otherwise, I'm going to assume they are available since AAGI inception.
-              BIP_Licence = curr_selection$Restrictions,
-              BIP_Owner = "",
-              BIP_Provider = "",
-              BIP_Restrictions = curr_selection$Restrictions
-            ))
-          } else {
-            db_BIP(db_BIP() |> add_row(
-              Table1 = F, Table2 = T, Table3 = F,
-              BIP_Name = paste(substr(t2_loaded_data[i,3], 1, 40), "...", sep=""),
-              BIP_Code = t2_loaded_data[i,2],
-              BIP_Description = t2_loaded_data[i,3],
-              BIP_Date = as.Date(t2_loaded_data[i,4], origin="1899-12-30"),
-              BIP_Licence = t2_loaded_data[i,5],
-              BIP_Owner = "",
-              BIP_Provider = "",
-              BIP_Restrictions = t2_loaded_data[i,5]
-            ))
-          }
-        }
-      }
-
-      t3_loaded_data <- read.xlsx(loaded_file, sheet=4, startRow=2, colNames=FALSE, skipEmptyCols = FALSE)
-      for (i in 1:nrow(t3_loaded_data)){
-        if (!(t3_loaded_data[i,4] %in% db_BIP()[["BIP_Description"]])){
-          if (t3_loaded_data[i,4] %in% db_REF$Description){
-            curr_selection <- db_REF[db_REF$Description == t3_loaded_data[i,4],]
-            db_BIP(db_BIP() |> add_row(
-              Table1 = F, Table2 = F, Table3 = T,
-              BIP_Name = curr_selection$Name,
-              BIP_Code = curr_selection$Code,
-              BIP_Description = curr_selection$Description,
-              BIP_Date = as.Date("18/07/2023", format="%d/%m/%Y"), # Until stated otherwise, I'm going to assume they are available since AAGI inception.
-              BIP_Licence = curr_selection$Arrangements,
-              BIP_Owner = curr_selection$Owner,
-              BIP_Provider = "",
-              BIP_Restrictions = curr_selection$Restrictions
-            ))
-          } else {
-            db_BIP(db_BIP() |> add_row(
-              Table1 = F, Table2 = F, Table3 = T,
-              BIP_Name = paste(substr(t3_loaded_data[i,4], 1, 40), "...", sep=""),
-              BIP_Code = t3_loaded_data[i,2],
-              BIP_Description = t3_loaded_data[i,4],
-              BIP_Date = as.Date(t3_loaded_data[i,5], origin="1899-12-30"),
-              BIP_Licence = t3_loaded_data[i,7],
-              BIP_Owner = t3_loaded_data[i,3],
-              BIP_Provider = if(is.na(t3_loaded_data[i,6])){""}else{t3_loaded_data[i,6]},
-              BIP_Restrictions = t3_loaded_data[i,8]
-            ))
-          }
-        }
-      }
-
-      t4_loaded_data <- read.xlsx(loaded_file, sheet=5, startRow=2, colNames=FALSE, skipEmptyCols = FALSE)
-      
-      for (i in 1:nrow(t4_loaded_data)){
-        db_OUT(db_OUT() |> add_row(
-          OUT_Name = paste(substr(t4_loaded_data[i,3], 1, 40), "...", sep=""),
-          OUT_Code = t4_loaded_data[i,2],
-          OUT_Description = t4_loaded_data[i,3],
-          OUT_Date = as.Date(t4_loaded_data[i,4], origin="1899-12-30"),
-          OUT_Licence = t4_loaded_data[i,6]
-        ))
-        
-        t1_init_numbers <- numeric()
-        t2_init_numbers <- numeric()
-        t3_init_numbers <- numeric()
-        for (j in strsplit(t4_loaded_data[i,5], "\n")[[1]]){
-          if(!(is.na(strsplit(j, " ")[[1]][2]))){
-            if (strsplit(j, " ")[[1]][2]=="1,"){
-              t1_init_numbers <- as.numeric(strsplit(
-                strsplit(j, " ")[[1]][4], ","
-              )[[1]])
-            } else if (strsplit(j, " ")[[1]][2]=="2,"){
-              t2_init_numbers <- as.numeric(strsplit(
-                strsplit(j, " ")[[1]][4], ","
-              )[[1]])
-            } else if (strsplit(j, " ")[[1]][2]=="3,"){
-              t3_init_numbers <- as.numeric(strsplit(
-                strsplit(j, " ")[[1]][4], ","
-              )[[1]])
-            }
-          }
-        }
-        
-        for (entry in db_BIP()[db_BIP()[["BIP_Description"]] %in% unique(c(t1_loaded_data[t1_init_numbers,3], t2_loaded_data[t2_init_numbers,3], t3_loaded_data[t3_init_numbers,4])),"BIP_Name"]){
-          db_USED_IN(db_USED_IN() |> add_row(
-            OUT_Name = paste(substr(t4_loaded_data[i,3], 1, 40), "...", sep=""),
-            BIP_Name = entry
+    loaded_file <- loadWorkbook(input$load_data$datapath)
+    
+    t1_loaded_data <- read.xlsx(loaded_file, sheet=2, startRow=2, colNames=FALSE, skipEmptyCols = FALSE)
+    t2_loaded_data <- read.xlsx(loaded_file, sheet=3, startRow=2, colNames=FALSE, skipEmptyCols = FALSE)
+    
+    for (i in 1:nrow(t1_loaded_data)){
+      if (!(t1_loaded_data[i,3] %in% db_BIP()[["BIP_Description"]])){
+        if (t1_loaded_data[i,3] %in% db_REF$Description){
+          curr_selection <- db_REF[db_REF$Description == t1_loaded_data[i,3],]
+          db_BIP(db_BIP() |> add_row(
+            Table1 = T, Table2 = curr_selection$Table2, Table3 = F,
+            BIP_Name = curr_selection$Name,
+            BIP_Code = curr_selection$Code,
+            BIP_Description = curr_selection$Description,
+            BIP_Date = as.Date("18/07/2023", format="%d/%m/%Y"), # Until stated otherwise, I'm going to assume they are available since AAGI inception.
+            BIP_Licence = curr_selection$Restrictions,
+            BIP_Owner = "",
+            BIP_Provider = "",
+            BIP_Restrictions = curr_selection$Restrictions
+          ))
+        } else {
+          db_BIP(db_BIP() |> add_row(
+            Table1 = T, 
+            Table2 = if(t1_loaded_data[i,3] %in% t2_loaded_data[,3]){T}else{F},
+            Table3 = F,
+            BIP_Name = paste(substr(t1_loaded_data[i,3], 1, 40), "...", sep=""),
+            BIP_Code = t1_loaded_data[i,2],
+            BIP_Description = t1_loaded_data[i,3],
+            BIP_Date = as.Date(t1_loaded_data[i,4], origin="1899-12-30"),
+            BIP_Licence = t1_loaded_data[i,5],
+            BIP_Owner = "",
+            BIP_Provider = "",
+            BIP_Restrictions = t1_loaded_data[i,5]
           ))
         }
       }
+    }
 
-      t5_loaded_data <- read.xlsx(loaded_file, sheet=6, startRow=2, colNames=FALSE, skipEmptyCols = FALSE)
-      for (i in 1:nrow(t5_loaded_data)){
-        db_SEN(db_SEN() |> add_row(
-          OUT_Name = db_OUT()[db_OUT()["OUT_Description"]==t5_loaded_data[i,3],"OUT_Name"],
-          SEN_Name = t5_loaded_data[i,2]
-        ))
+    for (i in 1:nrow(t2_loaded_data)){
+      if (!(t2_loaded_data[i,3] %in% db_BIP()[["BIP_Description"]])){
+        if (t2_loaded_data[i,3] %in% db_REF$Description){
+          curr_selection <- db_REF[db_REF$Description == t2_loaded_data[i,3],]
+          db_BIP(db_BIP() |> add_row(
+            Table1 = curr_selection$Table1, Table2 = T, Table3 = F,
+            BIP_Name = curr_selection$Name,
+            BIP_Code = curr_selection$Code,
+            BIP_Description = curr_selection$Description,
+            BIP_Date = as.Date("18/07/2023", format="%d/%m/%Y"), # Until stated otherwise, I'm going to assume they are available since AAGI inception.
+            BIP_Licence = curr_selection$Restrictions,
+            BIP_Owner = "",
+            BIP_Provider = "",
+            BIP_Restrictions = curr_selection$Restrictions
+          ))
+        } else {
+          db_BIP(db_BIP() |> add_row(
+            Table1 = F, Table2 = T, Table3 = F,
+            BIP_Name = paste(substr(t2_loaded_data[i,3], 1, 40), "...", sep=""),
+            BIP_Code = t2_loaded_data[i,2],
+            BIP_Description = t2_loaded_data[i,3],
+            BIP_Date = as.Date(t2_loaded_data[i,4], origin="1899-12-30"),
+            BIP_Licence = t2_loaded_data[i,5],
+            BIP_Owner = "",
+            BIP_Provider = "",
+            BIP_Restrictions = t2_loaded_data[i,5]
+          ))
+        }
+      }
+    }
+
+    t3_loaded_data <- read.xlsx(loaded_file, sheet=4, startRow=2, colNames=FALSE, skipEmptyCols = FALSE)
+    for (i in 1:nrow(t3_loaded_data)){
+      if (!(t3_loaded_data[i,4] %in% db_BIP()[["BIP_Description"]])){
+        if (t3_loaded_data[i,4] %in% db_REF$Description){
+          curr_selection <- db_REF[db_REF$Description == t3_loaded_data[i,4],]
+          db_BIP(db_BIP() |> add_row(
+            Table1 = F, Table2 = F, Table3 = T,
+            BIP_Name = curr_selection$Name,
+            BIP_Code = curr_selection$Code,
+            BIP_Description = curr_selection$Description,
+            BIP_Date = as.Date("18/07/2023", format="%d/%m/%Y"), # Until stated otherwise, I'm going to assume they are available since AAGI inception.
+            BIP_Licence = curr_selection$Arrangements,
+            BIP_Owner = curr_selection$Owner,
+            BIP_Provider = "",
+            BIP_Restrictions = curr_selection$Restrictions
+          ))
+        } else {
+          db_BIP(db_BIP() |> add_row(
+            Table1 = F, Table2 = F, Table3 = T,
+            BIP_Name = paste(substr(t3_loaded_data[i,4], 1, 40), "...", sep=""),
+            BIP_Code = t3_loaded_data[i,2],
+            BIP_Description = t3_loaded_data[i,4],
+            BIP_Date = as.Date(t3_loaded_data[i,5], origin="1899-12-30"),
+            BIP_Licence = t3_loaded_data[i,7],
+            BIP_Owner = t3_loaded_data[i,3],
+            BIP_Provider = if(is.na(t3_loaded_data[i,6])){""}else{t3_loaded_data[i,6]},
+            BIP_Restrictions = t3_loaded_data[i,8]
+          ))
+        }
+      }
+    }
+
+    t4_loaded_data <- read.xlsx(loaded_file, sheet=5, startRow=2, colNames=FALSE, skipEmptyCols = FALSE)
+    
+    for (i in 1:nrow(t4_loaded_data)){
+      db_OUT(db_OUT() |> add_row(
+        OUT_Name = paste(substr(t4_loaded_data[i,3], 1, 40), "...", sep=""),
+        OUT_Code = t4_loaded_data[i,2],
+        OUT_Description = t4_loaded_data[i,3],
+        OUT_Date = as.Date(t4_loaded_data[i,4], origin="1899-12-30"),
+        OUT_Licence = t4_loaded_data[i,6]
+      ))
+      
+      t1_init_numbers <- numeric()
+      t2_init_numbers <- numeric()
+      t3_init_numbers <- numeric()
+      for (j in strsplit(t4_loaded_data[i,5], "\n")[[1]]){
+        if(!(is.na(strsplit(j, " ")[[1]][2]))){
+          if (strsplit(j, " ")[[1]][2]=="1,"){
+            t1_init_numbers <- as.numeric(strsplit(
+              strsplit(j, " ")[[1]][4], ","
+            )[[1]])
+          } else if (strsplit(j, " ")[[1]][2]=="2,"){
+            t2_init_numbers <- as.numeric(strsplit(
+              strsplit(j, " ")[[1]][4], ","
+            )[[1]])
+          } else if (strsplit(j, " ")[[1]][2]=="3,"){
+            t3_init_numbers <- as.numeric(strsplit(
+              strsplit(j, " ")[[1]][4], ","
+            )[[1]])
+          }
+        }
       }
       
-      sendSweetAlert(
-        session = session,
-        title = "Success",
-        text = "File loaded successfully",
-        type = "success"
-      )
-    } else {
-      sendSweetAlert(
-        session = session,
-        title = "Failure",
-        text = "Unable to locate file with given name. Did you remember to add the .xlsx extension?",
-        type = "error"
-      )
+      for (entry in db_BIP()[db_BIP()[["BIP_Description"]] %in% unique(c(t1_loaded_data[t1_init_numbers,3], t2_loaded_data[t2_init_numbers,3], t3_loaded_data[t3_init_numbers,4])),"BIP_Name"]){
+        db_USED_IN(db_USED_IN() |> add_row(
+          OUT_Name = paste(substr(t4_loaded_data[i,3], 1, 40), "...", sep=""),
+          BIP_Name = entry
+        ))
+      }
+    }
+
+    t5_loaded_data <- read.xlsx(loaded_file, sheet=6, startRow=2, colNames=FALSE, skipEmptyCols = FALSE)
+    for (i in 1:nrow(t5_loaded_data)){
+      db_SEN(db_SEN() |> add_row(
+        OUT_Name = db_OUT()[db_OUT()["OUT_Description"]==t5_loaded_data[i,3],"OUT_Name"],
+        SEN_Name = t5_loaded_data[i,2]
+      ))
     }
   })
   
@@ -1148,6 +1111,17 @@ server <- function(input, output, session) {
     View(db_USED_IN())
     View(db_SEN())
   })
+  
+  ### Download handling -----
+  
+  output$download_IPPO <- downloadHandler(
+    filename = function() {
+      paste("AAGI-CU-", input$code, " - Support and Services IPPO Registrer.xlsx", sep="")
+    },
+    content = function(save_path) {
+      send_to_excel(db_BIP(), db_OUT(), db_USED_IN(), db_SEN(), save_path)
+    }
+  )
 }
 
 # Run the application 

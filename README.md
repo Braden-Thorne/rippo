@@ -33,14 +33,11 @@ options(o) # reset options
 
 This is a basic example which shows you how to solve a common problem:
 
-
-``` r
+```r
 # create a Word document of IPPO tables from each of the project's registers
 
 library(rippo)
-#> Error in library(rippo): there is no package called 'rippo'
 create_ippo_tables()
-#> Error in create_ippo_tables(): could not find function "create_ippo_tables"
 ```
 
 ## Contributions 

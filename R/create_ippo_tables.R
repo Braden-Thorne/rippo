@@ -16,7 +16,7 @@
 #'  # for macOS
 #'  library(fs)
 #'  R_drive <- "/Volumes/0-9/AAGI_CCDM_CBADA-GIBBEM-SE21982/"
-#'  collate_ippo(
+#'  create_ippo_tables(
 #'    dir_path_in = path(R_drive, "Projects"),
 #'    dir_path_out = path(R_drive, "Reports")
 #'  )
@@ -58,6 +58,9 @@ create_ippo_tables <- function(dir_path_in, dir_path_out) {
         ippo_registers,
         ippo_paths
     )
+
+    # TODO: remove any temporary Excel files, e.g., those starting a filename
+    # with a "~" that exist in the directory.
 
     # Regular expression pattern
     pattern <- "(?<=/Projects/).*?(?=/1 Documentation/)"

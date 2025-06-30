@@ -32,7 +32,7 @@ options(o) # reset options
 ## Running IPPO Shiny app
 
 {rippo} includes a Shiny web app to make interfacing with the IPPO tables simpler.
-Once rippo is installed you can run the web app like so:
+Once {rippo} is installed you can run the web app like so:
 
 ```r
 library(rippo)

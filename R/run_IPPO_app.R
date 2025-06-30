@@ -11,15 +11,9 @@
 #' @export
 run_IPPO_app <- function() {
   appDir <- system.file("IPPO_app", package = "rippo")
-  
-  installed_pkgs <- rownames(installed.packages())
-  not_found <- setdiff(c("shiny", "shinyWidgets", "bslib", "dplyr", "openxlsx"), grep("(^shiny$)|(^shinyWidgets$)|(^bslib$)|(^dplyr$)|(^openxlsx$)", installed_pkgs, value = TRUE))
-  if (length(not_found) > 0) {
-    cli::cli_abort("Package ", not_found[1], " is needed for this function to work. Please install it.", call. = FALSE)
-  }
-  
+
   if (appDir == "") {
-    cli::cli_abort("Could not find IPPO_app. Try re-installing `rippo`.", call. = FALSE)
+    cli::cli_abort("Could not find {.code IPPO_app}. Try re-installing {.pkg rippo}.")
   }
   else {
     ### Can add a resource path here if required using shiny::addResourcePath('path', system.file('path', package = 'rippo'))

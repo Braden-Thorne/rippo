@@ -6,8 +6,10 @@ Authors@R: c(
            comment = c(ORCID = "0000-0002-0061-8359")),
     person("Zhanglong", "Cao", , "zhanglong.cao@curtin.edu.au", role = "aut",
            comment = c("Wrote original `create_table_3()`.", ORCID = "0000-0001-6667-9392")),
+    person("Braden", "Thorne", , "braden.thorne@curtin.edu.au", role = "aut",
+           comment = c("Contributed the Shiny app for generating IPPO register tables.", ORCID = "0000-0003-0497-1675")),
     person("Curtin University of Technology", role = "cph",
-           comment = "Provided support through Adam Sparks's time."),
+           comment = "Provided support through Adam Sparks, Zhanglon Cao and Braden Thorne's time."),
     person("Grains Research and Development Corporation", role = c("fnd", "cph"),
            comment = "GRDC Project CUR2210-005OPX (AAGI-CU)")
   )

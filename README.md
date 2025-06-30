@@ -11,7 +11,7 @@ output: github_document
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of rippo is to ease data entry and tracking of AAGI-CU Intellectual Property and Project Outputs (IPPO) for reporting purposes.
+The goal of {rippo} is to ease data entry and tracking of AAGI-CU Intellectual Property and Project Outputs (IPPO) for reporting purposes.
 
 ## Installation
 
@@ -64,7 +64,7 @@ When uploading your existing IPPO register, be aware of the following restrictio
 - If the description of background IP in the imported document does not match *exactly* any of the descriptions in the catalogue, it will be identified as a novel piece of IP.
 This can be confusing for packages where the name may be the same but they are identified as different due to discrepancies in the description.
 
-- Dates are expected to be formatted as date objects in excel.
+- Dates are expected to be formatted as date objects in Excel.
 If stored as text (or other) data types, this may cause issues upon loading.
 
 - The links between outputs and background IP are expected to come as `Table X, Lines Y` where `X` is the relevant table and `Y` is a list of comma separated integers corresponding to the rows in that table.

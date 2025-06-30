@@ -24,7 +24,7 @@ options(pkg.build_vignettes = TRUE)
 
 if (!require("pak"))
   install.packages("pak")
-pak::pak("AAGI-AUS/CBADASReml")
+pak::pak("AAGI-AUS/rippo")
 
 options(o) # reset options
 ```

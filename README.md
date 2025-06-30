@@ -24,7 +24,7 @@ options(pkg.build_vignettes = TRUE)
 
 if (!require("pak"))
   install.packages("pak")
-pak::pak("AAGI-AUS/CBADASReml")
+pak::pak("AAGI-AUS/rippo")
 
 options(o) # reset options
 ```
@@ -44,3 +44,7 @@ create_ippo_tables()
 
 All contributions are appreciated, but please make sure to follow the [Contribution Guidelines](.github/CONTRIBUTING.md).
 
+### Code of Conduct
+
+Please note that the {read.abares} project is released with a [Contributor Code of Conduct](https://AAGI-AUS.github.io/rippo/CODE_OF_CONDUCT.md).
+By contributing to this project, you agree to abide by its terms.

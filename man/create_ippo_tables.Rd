@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_ippo_tables.R
 \name{create_ippo_tables}
 \alias{create_ippo_tables}
-\title{Create IPPO Tables List}
+\title{Create IPPO tables List}
 \usage{
 create_ippo_tables(dir_path_in, dir_path_out)
 }

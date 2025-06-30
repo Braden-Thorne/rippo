@@ -46,7 +46,7 @@ create_ippo_tables <- function(dir_path_in, dir_path_out) {
     active <- active[!grepl("Projects/RiskWise Program", active, fixed = TRUE)]
 
     # point to the IPPO registers
-    ippo_paths <- paste0(c(completed, active), "/1 Documentation/")
+    ippo_paths <- file.path(c(completed, active), "/1 Documentation/")
     ippo_registers <- lapply(
         X = ippo_paths,
         FUN = fs::dir_ls,

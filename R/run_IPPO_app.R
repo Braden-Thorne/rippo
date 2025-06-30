@@ -16,7 +16,7 @@ run_IPPO_app <- function() {
         cli::cli_abort(
             "Could not find {.code IPPO_app}. Try re-installing {.pkg rippo}."
         )
-    } else if (interactive) {
+    } else if (interactive()) {
         ### Can add a resource path here if required using shiny::addResourcePath('path', system.file('path', package = 'rippo'))
         shiny::runApp(appDir)
     }

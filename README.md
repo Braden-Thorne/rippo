@@ -11,11 +11,11 @@ output: github_document
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of rippo is to ease data entry and tracking of AAGI-CU Intellectual Property and Project Outputs for reporting purposes.
+The goal of rippo is to ease data entry and tracking of AAGI-CU Intellectual Property and Project Outputs (IPPO) for reporting purposes.
 
 ## Installation
 
-You can install the development version of rippo like so:
+You can install the development version of {rippo} like so:
 
 ```r
 o <- options() # store default options
@@ -31,14 +31,12 @@ options(o) # reset options
 
 ## Running IPPO Shiny app
 
-rippo includes a shiny web app to make interfacing with the IPPO tables simpler.
+{rippo} includes a Shiny web app to make interfacing with the IPPO tables simpler.
 Once rippo is installed you can run the web app like so:
 
-
-``` r
+```r
 library(rippo)
 run_IPPO_app()
-#> Error in if (interactive) {: argument is not interpretable as logical
 ```
 
 The app currently has the following features:

@@ -59,12 +59,14 @@ create_ippo_tables <- function(dir_path_in, dir_path_out) {
         ippo_paths
     )
 
-    # TODO: remove any temporary Excel files, e.g., those starting a filename
-    # with a "~" that exist in the directory.
-
-    # Regular expression pattern
-    pattern <- "(?<=/Projects/).*?(?=/1 Documentation/)"
-
+    # Regular expression patterns
+    naming_pattern <- "(?<=/Projects/).*?(?=/1 Documentation/)"
+    merged <- merged[grep(
+        sub("(.)$", "~\\1", naming_pattern),
+        merged,
+        invert = TRUE,
+        perl = TRUE
+    )]
     # Apply regex using vapply
     project_names <- vapply(
         merged,

@@ -71,7 +71,7 @@ create_ippo_tables <- function(dir_path_in, dir_path_out) {
     project_names <- vapply(
         merged,
         function(x) {
-            regmatches(x, regexpr(pattern, x, perl = TRUE))
+            regmatches(x, regexpr(naming_pattern, x, perl = TRUE))
         },
         character(1L)
     )
@@ -126,11 +126,6 @@ create_ippo_tables <- function(dir_path_in, dir_path_out) {
     )
 
     tables <- list(table_1, table_2, table_3, table_4, table_5)
-    tables_out <- lapply(
-        X = tables,
-        FUN = purrr::list_rbind,
-        names_to = "Project Code"
-    )
 
     return(list("tables" = tables, "No_IPPO" = no_ippo))
 }

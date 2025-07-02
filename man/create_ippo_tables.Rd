@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_ippo_tables.R
 \name{create_ippo_tables}
 \alias{create_ippo_tables}
-\title{Create IPPO tables List}
+\title{Create IPPO tables list}
 \usage{
 create_ippo_tables(dir_path_in, dir_path_out)
 }
@@ -31,7 +31,7 @@ creates a list of tables corresponding to Tables 1-5 in the \acronym{AAGI}
  # for macOS
  library(fs)
  R_drive <- "/Volumes/0-9/AAGI_CCDM_CBADA-GIBBEM-SE21982/"
- collate_ippo(
+ create_ippo_tables(
    dir_path_in = path(R_drive, "Projects"),
    dir_path_out = path(R_drive, "Reports")
  )

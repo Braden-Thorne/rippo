@@ -11,11 +11,11 @@ output: github_document
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of rippo is to ease data entry and tracking of AAGI-CU Intellectual Property and Project Outputs for reporting purposes.
+The goal of {rippo} is to ease data entry and tracking of AAGI-CU Intellectual Property and Project Outputs (IPPO) for reporting purposes.
 
 ## Installation
 
-You can install the development version of rippo like so:
+You can install the development version of {rippo} like so:
 
 ```r
 o <- options() # store default options
@@ -29,16 +29,47 @@ pak::pak("AAGI-AUS/rippo")
 options(o) # reset options
 ```
 
-## Example
+## Running IPPO Shiny app
 
-This is a basic example which shows you how to solve a common problem:
+{rippo} includes a Shiny web app to make interfacing with the IPPO tables simpler.
+Once {rippo} is installed you can run the web app like so:
 
 ```r
-# create a Word document of IPPO tables from each of the project's registers
-
 library(rippo)
-create_ippo_tables()
+run_IPPO_app()
 ```
+
+The app currently has the following features:
+- Add background IP by specifying the relevant details.
+- Add background IP from a catalogue of frequently-used IP
+- Add outputs and specify links between outputs and background IP
+- Add correspondence related to outputs
+- Load an existing IPPO registry
+- Edit and delete existing entries
+- Export resulting IPPO in .xlsx format
+
+### The background IP catalogue
+
+The current catalogue contains a selection of IP from a small number of AAGI projects.
+We do not expect this is a complete list of the frequently used IP.
+If you believe there is IP that is used frequently by yourself and others and should be added to the catalogue, submit an issue with either:
+- the package name and relevant language, or
+- the relevant information for the IPPO table.
+
+### Limitations on IPPO upload
+
+While the uploader works well on IPPO iles generated using the app, older files that do not conform to the same structure can run into issues.
+When uploading your existing IPPO register, be aware of the following restrictions (this list may change as further development is undertaken).
+
+- If the description of background IP in the imported document does not match *exactly* any of the descriptions in the catalogue, it will be identified as a novel piece of IP.
+This can be confusing for packages where the name may be the same but they are identified as different due to discrepancies in the description.
+
+- Dates are expected to be formatted as date objects in Excel.
+If stored as text (or other) data types, this may cause issues upon loading.
+
+- The links between outputs and background IP are expected to come as `Table X, Lines Y` where `X` is the relevant table and `Y` is a list of comma separated integers corresponding to the rows in that table.
+If you have a run of consecutive rows, the app will expect each entry to be listed *individually*, not collapsed.
+For example, an entry for table 1 may look like `Table 1, Lines 1,2,3,4,8` not `Table 1 Lines 1:4, 8` nor `Table 1 Lines 1-4, 8`.
 
 ## Contributions 
 

@@ -18,11 +18,11 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of rippo is to ease data entry and tracking of AAGI-CU Intellectual Property and Project Outputs for reporting purposes.
+The goal of {rippo} is to ease data entry and tracking of AAGI-CU Intellectual Property and Project Outputs (IPPO) for reporting purposes.
 
 ## Installation
 
-You can install the development version of rippo like so:
+You can install the development version of {rippo} like so:
 
 ```r
 o <- options() # store default options
@@ -38,10 +38,10 @@ options(o) # reset options
 
 ## Running IPPO Shiny app
 
-rippo includes a shiny web app to make interfacing with the IPPO tables simpler.
-Once rippo is installed you can run the web app like so:
+{rippo} includes a Shiny web app to make interfacing with the IPPO tables simpler.
+Once {rippo} is installed you can run the web app like so:
 
-```{r}
+```r
 library(rippo)
 run_IPPO_app()
 ```
@@ -68,28 +68,18 @@ If you believe there is IP that is used frequently by yourself and others and sh
 While the uploader works well on IPPO files generated using the app, older files that do not conform to the same structure can run into issues.
 When uploading your existing IPPO register, be aware of the following restrictions (this list may change as further development is undertaken).
 
+
 - If the description of background IP in the imported document does not match *exactly* any of the descriptions in the catalog, it may be identified as a novel piece of IP.
 This can be confusing for packages where the name may be the same but they are identified as different due to discrepancies in the description.
 If you specify the name of the background IP in curly braces followed by a space at the start of the description (eg. `{BIPName} Description of BIP.`), the uploader will recognise this as a name for the background IP and will check that against the existing records as well.
 We recommend avoiding the use of curly braces for other purposes in the background IP descriptions.
 
-- Dates are expected to be formatted as date objects in excel.
+- Dates are expected to be formatted as date objects in Excel.
 If stored as text (or other) data types, this may cause issues upon loading.
 
 - The links between outputs and background IP are expected to come as `Table X, Lines Y` where `X` is the relevant table and `Y` is a list corresponding to the rows in that table.
 By default the app will save this as a list of comma separated integers (eg. `Table 1, Lines 1,2,3,4,8`), however for the purposes of reading in files it will recognise collapsed lists using colons and hyphens (eg. `Table 1 Lines 1:4, 8` and `Table 1 Lines 1-4, 8`).
 Other ways of specifying this list will not be identified.
-
-## Example
-
-This is a basic example which shows you how to solve a common problem:
-
-```r
-# create a Word document of IPPO tables from each of the project's registers
-
-library(rippo)
-create_ippo_tables()
-```
 
 ## Contributions 
 

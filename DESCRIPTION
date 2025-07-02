@@ -18,6 +18,8 @@ Description: Helper functions that ease preparing the AAGI-CU IPPO
 License: MIT + file LICENSE
 URL: https://github.com/AAGI-AUS/rippo
 BugReports: https://github.com/AAGI-AUS/rippo/issues
+Depends:
+    R (>= 4.0.0)
 Imports:
     bslib,
     cli,

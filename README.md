@@ -41,7 +41,7 @@ run_IPPO_app()
 
 The app currently has the following features:
 - Add background IP by specifying the relevant details.
-- Add background IP from a catalogue of frequently-used IP
+- Add background IP from a catalog of frequently-used IP
 - Add outputs and specify links between outputs and background IP
 - Add correspondence related to outputs
 - Load an existing IPPO registry
@@ -50,26 +50,29 @@ The app currently has the following features:
 
 ### The background IP catalogue
 
-The current catalogue contains a selection of IP from a small number of AAGI projects.
+The current catalog contains a selection of IP from a small number of AAGI projects.
 We do not expect this is a complete list of the frequently used IP.
-If you believe there is IP that is used frequently by yourself and others and should be added to the catalogue, submit an issue with either:
+If you believe there is IP that is used frequently by yourself and others and should be added to the catalog, submit an issue with either:
 - the package name and relevant language, or
 - the relevant information for the IPPO table.
 
 ### Limitations on IPPO upload
 
-While the uploader works well on IPPO iles generated using the app, older files that do not conform to the same structure can run into issues.
+While the uploader works well on IPPO files generated using the app, older files that do not conform to the same structure can run into issues.
 When uploading your existing IPPO register, be aware of the following restrictions (this list may change as further development is undertaken).
 
-- If the description of background IP in the imported document does not match *exactly* any of the descriptions in the catalogue, it will be identified as a novel piece of IP.
+
+- If the description of background IP in the imported document does not match *exactly* any of the descriptions in the catalog, it may be identified as a novel piece of IP.
 This can be confusing for packages where the name may be the same but they are identified as different due to discrepancies in the description.
+If you specify the name of the background IP in curly braces followed by a space at the start of the description (eg. `{BIPName} Description of BIP.`), the uploader will recognise this as a name for the background IP and will check that against the existing records as well.
+We recommend avoiding the use of curly braces for other purposes in the background IP descriptions.
 
 - Dates are expected to be formatted as date objects in Excel.
 If stored as text (or other) data types, this may cause issues upon loading.
 
-- The links between outputs and background IP are expected to come as `Table X, Lines Y` where `X` is the relevant table and `Y` is a list of comma separated integers corresponding to the rows in that table.
-If you have a run of consecutive rows, the app will expect each entry to be listed *individually*, not collapsed.
-For example, an entry for table 1 may look like `Table 1, Lines 1,2,3,4,8` not `Table 1 Lines 1:4, 8` nor `Table 1 Lines 1-4, 8`.
+- The links between outputs and background IP are expected to come as `Table X, Lines Y` where `X` is the relevant table and `Y` is a list corresponding to the rows in that table.
+By default the app will save this as a list of comma separated integers (eg. `Table 1, Lines 1,2,3,4,8`), however for the purposes of reading in files it will recognise collapsed lists using colons and hyphens (eg. `Table 1 Lines 1:4, 8` and `Table 1 Lines 1-4, 8`).
+Other ways of specifying this list will not be identified.
 
 ## Contributions 
 
@@ -77,5 +80,5 @@ All contributions are appreciated, but please make sure to follow the [Contribut
 
 ### Code of Conduct
 
-Please note that the {read.abares} project is released with a [Contributor Code of Conduct](https://AAGI-AUS.github.io/rippo/CODE_OF_CONDUCT.md).
+Please note that the {rippo} project is released with a [Contributor Code of Conduct](https://AAGI-AUS.github.io/rippo/CODE_OF_CONDUCT.md).
 By contributing to this project, you agree to abide by its terms.

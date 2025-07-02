@@ -59,7 +59,7 @@ The app currently has the following features:
 
 The current catalog contains a selection of IP from a small number of AAGI projects.
 We do not expect this is a complete list of the frequently used IP.
-If you believe there is IP that is used frequently by yourself and others and should be added to the catalogue, submit an issue with either:
+If you believe there is IP that is used frequently by yourself and others and should be added to the catalog, submit an issue with either:
 - the package name and relevant language, or
 - the relevant information for the IPPO table.
 
@@ -97,5 +97,5 @@ All contributions are appreciated, but please make sure to follow the [Contribut
 
 ### Code of Conduct
 
-Please note that the {read.abares} project is released with a [Contributor Code of Conduct](https://AAGI-AUS.github.io/rippo/CODE_OF_CONDUCT.md).
+Please note that the {rippo} project is released with a [Contributor Code of Conduct](https://AAGI-AUS.github.io/rippo/CODE_OF_CONDUCT.md).
 By contributing to this project, you agree to abide by its terms.

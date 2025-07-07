@@ -1,6 +1,6 @@
 #' Run the Shiny IPPO app
 #'
-#' Runs a shiny app where a user can build, edit and download an IPPO registry.
+#' Runs a Shiny app where a user can build, edit and download an IPPO registry.
 #'
 #' @returns An invisible `NULL`, called for its side-effects of launching a
 #'  Shiny application.

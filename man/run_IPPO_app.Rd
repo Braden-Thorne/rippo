@@ -11,7 +11,7 @@ An invisible \code{NULL}, called for its side-effects of launching a
 Shiny application.
 }
 \description{
-Runs a shiny app where a user can build, edit and download an IPPO registry.
+Runs a Shiny app where a user can build, edit and download an IPPO registry.
 }
 \examples{
 \dontrun{

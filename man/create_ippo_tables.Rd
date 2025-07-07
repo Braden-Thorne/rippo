@@ -17,9 +17,8 @@ not exist}. The file will be named "AAGI-CU-IPPO Register.docx" by default.
 Any currently existing IPPO register will be overwritten.}
 }
 \value{
-A \code{list} object that contains five \code{\link[tibble:tibble]{tibble::tibble()}} objects that
-contain either tables for the IPPO register or a list of projects lacking
-an IPPO register.
+A \code{list} object that contains tables of IPPO registers organised by
+AAGI Service and Support project or AAGI R&D Activity.
 }
 \description{
 Traverses directories and imports IPPO register Excel(TM) workbook files and
@@ -30,7 +29,7 @@ creates a list of tables corresponding to Tables 1-5 in the \acronym{AAGI}
 \dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
  # for macOS
  library(fs)
- R_drive <- "/Volumes/0-9/AAGI_CCDM_CBADA-GIBBEM-SE21982/"
+ R_drive <- "/Volumes/dmp/A-J/AAGI_CCDM_CBADA-GIBBEM-SE21982/"
  create_ippo_tables(
    dir_path_in = path(R_drive, "Projects"),
    dir_path_out = path(R_drive, "Reports")

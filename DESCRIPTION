@@ -30,6 +30,7 @@ Imports:
     funspotr,
     officer,
     openxlsx,
+    purrr,
     readxl,
     shiny,
     shinyWidgets,

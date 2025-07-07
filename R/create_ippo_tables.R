@@ -7,25 +7,20 @@
 #' @param dir_path_in A string value that provides the path to the top-level
 #'  directory of the R: drive holding the AAGI-CU Service and Support project
 #'  files.
-#' @param dir_path_out A string value that provides the path to the desired
-#'  directory to write the output file to. _It will be created if it does
-#'  not exist_. The file will be named "AAGI-CU-IPPO Register.docx" by default.
-#'  Any currently existing IPPO register will be overwritten.
 #'
 #' @examplesIf interactive()
 #'  # for macOS
 #'  library(fs)
 #'  R_drive <- "/Volumes/dmp/A-J/AAGI_CCDM_CBADA-GIBBEM-SE21982/"
-#'  create_ippo_tables(
-#'    dir_path_in = path(R_drive, "Projects"),
-#'    dir_path_out = path(R_drive, "Reports")
+#'  list_ippo_tables(
+#'    dir_path_in = path(R_drive, "Projects")
 #'  )
 #'
 #' @returns A `list` object that contains tables of IPPO registers organised by
 #'  AAGI Service and Support project or AAGI R&D Activity.
 #'
 
-create_ippo_tables <- function(dir_path_in, dir_path_out) {
+list_ippo_tables <- function(dir_path_in) {
     if (isFALSE(fs::dir_exists(dir_path_in))) {
         cli::cli_abort("{.var dir_path_in} does not exist; cannot proceed")
     }
@@ -132,7 +127,7 @@ create_ippo_tables <- function(dir_path_in, dir_path_out) {
     names(table_5) <- paste(names(table_5), "Table 5", sep = " - ")
     tables <- c(table_1, table_2, table_3, table_4, table_5)
     tables <- tables[order(names(tables))]
-    purrr::keep(tables, ~ nrow(.) > 0L)
+    tables <- purrr::keep(tables, ~ nrow(.) > 0L)
 
     return(list("tables" = tables, "No_IPPO" = no_ippo))
 }

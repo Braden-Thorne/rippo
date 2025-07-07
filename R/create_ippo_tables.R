@@ -15,15 +15,14 @@
 #' @examplesIf interactive()
 #'  # for macOS
 #'  library(fs)
-#'  R_drive <- "/Volumes/0-9/AAGI_CCDM_CBADA-GIBBEM-SE21982/"
+#'  R_drive <- "/Volumes/dmp/A-J/AAGI_CCDM_CBADA-GIBBEM-SE21982/"
 #'  create_ippo_tables(
 #'    dir_path_in = path(R_drive, "Projects"),
 #'    dir_path_out = path(R_drive, "Reports")
 #'  )
 #'
-#' @returns A `list` object that contains five [tibble::tibble()] objects that
-#'  contain either tables for the IPPO register or a list of projects lacking
-#'  an IPPO register.
+#' @returns A `list` object that contains tables of IPPO registers organised by
+#'  AAGI Service and Support project or AAGI R&D Activity.
 #'
 
 create_ippo_tables <- function(dir_path_in, dir_path_out) {
@@ -32,7 +31,9 @@ create_ippo_tables <- function(dir_path_in, dir_path_out) {
     }
 
     if (isFALSE(fs::dir_exists(dir_path_out))) {
-        cli::cli_warn("{.var dir_path_out} does not exist; it will be created")
+        cli::cli_inform(
+            "{.var dir_path_out} does not exist; it will be created"
+        )
         fs::dir_create(dir_path_out)
     }
 
@@ -77,7 +78,7 @@ create_ippo_tables <- function(dir_path_in, dir_path_out) {
     )
     project_names <- gsub(
         pattern = "02 Archived Completed/",
-        replacement = "Completed - ",
+        replacement = "",
         x = project_names
     )
     names(merged) <- project_names
@@ -91,12 +92,14 @@ create_ippo_tables <- function(dir_path_in, dir_path_out) {
         sheet = 2L,
         col_types = c("numeric", "text", "text", "date", "text")
     )
+    names(table_1) <- paste(names(table_1), "Table 1", sep = " - ")
     table_2 <- lapply(
         X = has_ippo,
         FUN = readxl::read_excel,
         sheet = 3L,
         col_types = c("numeric", "text", "text", "date", "text")
     )
+    names(table_2) <- paste(names(table_2), "Table 2", sep = " - ")
     table_3 <- lapply(
         X = has_ippo,
         FUN = readxl::read_excel,
@@ -112,20 +115,24 @@ create_ippo_tables <- function(dir_path_in, dir_path_out) {
             "text"
         )
     )
+    names(table_3) <- paste(names(table_3), "Table 3", sep = " - ")
     table_4 <- lapply(
         X = has_ippo,
         FUN = readxl::read_excel,
         sheet = 5L,
         col_types = c("numeric", "text", "text", "date", "text", "text")
     )
+    names(table_4) <- paste(names(table_4), "Table 4", sep = " - ")
     table_5 <- lapply(
         X = has_ippo,
         FUN = readxl::read_excel,
         sheet = 6L,
         col_types = c("numeric", "text", "text", "date", "text", "text")
     )
-
-    tables <- list(table_1, table_2, table_3, table_4, table_5)
+    names(table_5) <- paste(names(table_5), "Table 5", sep = " - ")
+    tables <- c(table_1, table_2, table_3, table_4, table_5)
+    tables <- tables[order(names(tables))]
+    purrr::keep(tables, ~ nrow(.) > 0L)
 
     return(list("tables" = tables, "No_IPPO" = no_ippo))
 }

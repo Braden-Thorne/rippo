@@ -19,6 +19,7 @@
 #' @returns A `list` object that contains tables of IPPO registers organised by
 #'  AAGI Service and Support project or AAGI R&D Activity.
 #'
+#' @export
 
 list_ippo_tables <- function(dir_path_in) {
     if (isFALSE(fs::dir_exists(dir_path_in))) {

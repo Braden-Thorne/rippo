@@ -1,5 +1,4 @@
 #' Create IPPO tables list
-#'
 #' Traverses directories and imports IPPO register Excel(TM) workbook files and
 #'  creates a list of tables corresponding to Tables 1-5 in the \acronym{AAGI}
 #'  \acronym{IPPO} register for all AAGI-CU Service and Support projects.
@@ -7,24 +6,38 @@
 #' @param dir_path_in A string value that provides the path to the top-level
 #'  directory of the R: drive holding the AAGI-CU Service and Support project
 #'  files.
+#' @inheritParams create_ippo_report
 #'
 #' @examplesIf interactive()
 #'  # for macOS
 #'  library(fs)
 #'  R_drive <- "/Volumes/dmp/A-J/AAGI_CCDM_CBADA-GIBBEM-SE21982/"
 #'  list_ippo_tables(
-#'    dir_path_in = path(R_drive, "Projects")
+#'    dir_path_in = path(R_drive, "Projects",
+#'    sp = "CU"
 #'  )
 #'
 #' @returns A `list` object that contains tables of IPPO registers organised by
 #'  AAGI Service and Support project or AAGI R&D Activity.
-#'
+#' @family reporting
 #' @export
 
-list_ippo_tables <- function(dir_path_in) {
+list_ippo_tables <- function(dir_path_in, sp) {
     if (isFALSE(fs::dir_exists(dir_path_in))) {
         cli::cli_abort("{.var dir_path_in} does not exist; cannot proceed")
     }
+
+    rlang::arg_match(
+        arg = sp,
+        values = c(
+            "Adelaide University",
+            "AU",
+            "Curtin University",
+            "CU",
+            "University of Queensland",
+            "UQ"
+        )
+    )
 
     # create a list of completed projects that are no longer actively supported
     completed <- fs::dir_ls(path(dir_path_in, "02 Archived Completed"))
@@ -70,6 +83,11 @@ list_ippo_tables <- function(dir_path_in) {
         replacement = "",
         x = project_names
     )
+    project_names <- gsub(
+        pattern = "/$",
+        replacement = "",
+        x = project_names
+    )
     names(merged) <- project_names
 
     has_ippo <- merged[grep(".xlsx", merged)]
@@ -81,14 +99,25 @@ list_ippo_tables <- function(dir_path_in) {
         sheet = 2L,
         col_types = c("numeric", "text", "text", "date", "text")
     )
-    names(table_1) <- paste(names(table_1), "Table 1", sep = " - ")
+    names(table_1) <- paste(
+        names(table_1),
+        sprintf(
+            "1. Background IP - Strategic Partner %s",
+            sp
+        ),
+        sep = " - "
+    )
     table_2 <- lapply(
         X = has_ippo,
         FUN = readxl::read_excel,
         sheet = 3L,
         col_types = c("numeric", "text", "text", "date", "text")
     )
-    names(table_2) <- paste(names(table_2), "Table 2", sep = " - ")
+    names(table_2) <- paste(
+        names(table_2),
+        "2. Background IP - GRDC",
+        sep = " - "
+    )
     table_3 <- lapply(
         X = has_ippo,
         FUN = readxl::read_excel,
@@ -104,24 +133,45 @@ list_ippo_tables <- function(dir_path_in) {
             "text"
         )
     )
-    names(table_3) <- paste(names(table_3), "Table 3", sep = " - ")
+    names(table_3) <- paste(
+        names(table_3),
+        "3. Background IP - Additional Party",
+        sep = " - "
+    )
     table_4 <- lapply(
         X = has_ippo,
         FUN = readxl::read_excel,
         sheet = 5L,
         col_types = c("numeric", "text", "text", "date", "text", "text")
     )
-    names(table_4) <- paste(names(table_4), "Table 4", sep = " - ")
+    names(table_4) <- paste(names(table_4), "4. Project Outputs", sep = " - ")
     table_5 <- lapply(
         X = has_ippo,
         FUN = readxl::read_excel,
         sheet = 6L,
         col_types = c("numeric", "text", "text", "date", "text", "text")
     )
-    names(table_5) <- paste(names(table_5), "Table 5", sep = " - ")
+    names(table_5) <- paste(
+        names(table_5),
+        "5. Project Outputs Provided to a Third Party",
+        sep = " - "
+    )
     tables <- c(table_1, table_2, table_3, table_4, table_5)
     tables <- tables[order(names(tables))]
-    tables <- purrr::keep(tables, ~ nrow(.) > 0L)
+    tables <- purrr::keep(tables, ~ nrow(.) > 0L) |>
+        purrr::map(.f = as.data.frame)
 
-    return(list("tables" = tables, "No_IPPO" = no_ippo))
+    base_name <- sub(" - .*", "", names(tables))
+    ippo_tables <- split(x = tables, f = base_name)
+    ippo_tables_names <- names(ippo_tables)
+
+    ippo_tables <- lapply(names(ippo_tables), function(group) {
+        sublist <- ippo_tables[[group]]
+        names(sublist) <- sub(paste0("^", group, " - "), "", names(sublist))
+        return(sublist)
+    })
+
+    names(ippo_tables) <- ippo_tables_names
+
+    return(list("ippo_tables" = ippo_tables, "No_IPPO" = no_ippo))
 }

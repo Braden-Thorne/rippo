@@ -18,3 +18,8 @@ Runs a Shiny app where a user can build, edit and download an IPPO registry.
 run_IPPO_app()
 }
 }
+\seealso{
+Other create IPPO: 
+\code{\link{create_table_3}()}
+}
+\concept{create IPPO}

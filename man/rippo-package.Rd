@@ -6,7 +6,7 @@
 \alias{rippo-package}
 \title{rippo: Simplify AAGI-CU IPPO Register Updates}
 \description{
-Helper functions that ease preparing the AAGI-CU IPPO register.
+Helper functions that ease preparing the AAGI IPPO register from creating third party background IP tables to generating IPPO reports on a project by project basis.
 }
 \seealso{
 Useful links:

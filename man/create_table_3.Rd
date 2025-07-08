@@ -36,7 +36,12 @@ Create a Table of Third Party IP (Table 3) of the R packages and AAGI Quarto tem
 create_table_3()
 
 }
+\seealso{
+Other create IPPO: 
+\code{\link{run_IPPO_app}()}
+}
 \author{
 Zhanglong Cao, \email{zhanglong.cao@curtin.edu.au} and Adam H.
 Sparks, \email{adam.sparks@curtin.edu.au}
 }
+\concept{create IPPO}

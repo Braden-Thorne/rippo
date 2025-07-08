@@ -26,13 +26,6 @@ list_ippo_tables <- function(dir_path_in) {
         cli::cli_abort("{.var dir_path_in} does not exist; cannot proceed")
     }
 
-    if (isFALSE(fs::dir_exists(dir_path_out))) {
-        cli::cli_inform(
-            "{.var dir_path_out} does not exist; it will be created"
-        )
-        fs::dir_create(dir_path_out)
-    }
-
     # create a list of completed projects that are no longer actively supported
     completed <- fs::dir_ls(path(dir_path_in, "02 Archived Completed"))
 

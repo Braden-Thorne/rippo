@@ -2,12 +2,12 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "rippo",
-  "description": "Helper functions that ease preparing the AAGI-CU IPPO register.",
+  "description": "Helper functions that ease preparing the AAGI IPPO register from creating third party background IP tables to generating IPPO reports on a project by project basis.",
   "name": "rippo: Simplify AAGI-CU IPPO Register Updates",
   "codeRepository": "https://github.com/AAGI-AUS/rippo",
   "issueTracker": "https://github.com/AAGI-AUS/rippo/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.0.0.9000",
+  "version": "0.0.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -86,6 +86,11 @@
     },
     "2": {
       "@type": "SoftwareApplication",
+      "identifier": "AAGIThemes",
+      "name": "AAGIThemes"
+    },
+    "3": {
+      "@type": "SoftwareApplication",
       "identifier": "bslib",
       "name": "bslib",
       "provider": {
@@ -96,7 +101,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=bslib"
     },
-    "3": {
+    "4": {
       "@type": "SoftwareApplication",
       "identifier": "cli",
       "name": "cli",
@@ -108,7 +113,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=cli"
     },
-    "4": {
+    "5": {
       "@type": "SoftwareApplication",
       "identifier": "data.table",
       "name": "data.table",
@@ -120,7 +125,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=data.table"
     },
-    "5": {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "dplyr",
       "name": "dplyr",
@@ -132,7 +137,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=dplyr"
     },
-    "6": {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "flextable",
       "name": "flextable",
@@ -144,7 +149,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=flextable"
     },
-    "7": {
+    "8": {
       "@type": "SoftwareApplication",
       "identifier": "fs",
       "name": "fs",
@@ -156,7 +161,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=fs"
     },
-    "8": {
+    "9": {
       "@type": "SoftwareApplication",
       "identifier": "funspotr",
       "name": "funspotr",
@@ -168,7 +173,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=funspotr"
     },
-    "9": {
+    "10": {
       "@type": "SoftwareApplication",
       "identifier": "officer",
       "name": "officer",
@@ -180,7 +185,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=officer"
     },
-    "10": {
+    "11": {
       "@type": "SoftwareApplication",
       "identifier": "openxlsx",
       "name": "openxlsx",
@@ -192,7 +197,19 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=openxlsx"
     },
-    "11": {
+    "12": {
+      "@type": "SoftwareApplication",
+      "identifier": "purrr",
+      "name": "purrr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=purrr"
+    },
+    "13": {
       "@type": "SoftwareApplication",
       "identifier": "readxl",
       "name": "readxl",
@@ -204,7 +221,19 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=readxl"
     },
-    "12": {
+    "14": {
+      "@type": "SoftwareApplication",
+      "identifier": "rlang",
+      "name": "rlang",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=rlang"
+    },
+    "15": {
       "@type": "SoftwareApplication",
       "identifier": "shiny",
       "name": "shiny",
@@ -216,7 +245,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=shiny"
     },
-    "13": {
+    "16": {
       "@type": "SoftwareApplication",
       "identifier": "shinyWidgets",
       "name": "shinyWidgets",
@@ -228,7 +257,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=shinyWidgets"
     },
-    "14": {
+    "17": {
       "@type": "SoftwareApplication",
       "identifier": "tibble",
       "name": "tibble",
@@ -240,7 +269,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tibble"
     },
-    "15": {
+    "18": {
       "@type": "SoftwareApplication",
       "identifier": "withr",
       "name": "withr",
@@ -254,7 +283,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "0KB",
+  "fileSize": "272.353KB",
   "releaseNotes": "https://github.com/AAGI-AUS/rippo/blob/master/NEWS.md",
   "readme": "https://github.com/AAGI-AUS/rippo/blob/main/README.md"
 }

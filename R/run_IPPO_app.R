@@ -8,6 +8,7 @@
 #' \dontrun{
 #' run_IPPO_app()
 #' }
+#' @family create IPPO
 #' @export
 run_IPPO_app <- function() {
     appDir <- system.file("IPPO_app", package = "rippo", mustWork = TRUE)

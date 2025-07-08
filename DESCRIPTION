@@ -1,6 +1,6 @@
 Package: rippo
 Title: Simplify AAGI-CU IPPO Register Updates
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: c(
     person("Adam H.", "Sparks", , "adam.sparks@curtin.edu.au", role = c("cre", "aut"),
            comment = c(ORCID = "0000-0002-0061-8359")),
@@ -13,14 +13,16 @@ Authors@R: c(
     person("Grains Research and Development Corporation", role = c("fnd", "cph"),
            comment = "GRDC Project CUR2210-005OPX (AAGI-CU)")
   )
-Description: Helper functions that ease preparing the AAGI-CU IPPO
-    register.
+Description: Helper functions that ease preparing the AAGI IPPO
+    register from creating third party background IP tables to generating
+    IPPO reports on a project by project basis.
 License: MIT + file LICENSE
 URL: https://github.com/AAGI-AUS/rippo
 BugReports: https://github.com/AAGI-AUS/rippo/issues
 Depends:
     R (>= 4.0.0)
 Imports:
+    AAGIThemes,
     bslib,
     cli,
     data.table,
@@ -32,6 +34,7 @@ Imports:
     openxlsx,
     purrr,
     readxl,
+    rlang,
     shiny,
     shinyWidgets,
     tibble,

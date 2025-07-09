@@ -88,7 +88,7 @@
       "@type": "SoftwareApplication",
       "identifier": "AAGIThemes",
       "name": "AAGIThemes",
-      "sameAs": "https://github.com/AAGI-AUS/AAGIPalettes\n    AAGI-AUS/AAGIThemes"
+      "sameAs": "https://github.com/https://github.com/AAGI-AUS/AAGIPalettes\n    https://github.com/AAGI-AUS/AAGIThemes"
     },
     "3": {
       "@type": "SoftwareApplication",
@@ -284,7 +284,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "272.25KB",
+  "fileSize": "272.288KB",
   "releaseNotes": "https://github.com/AAGI-AUS/rippo/blob/master/NEWS.md",
   "readme": "https://github.com/AAGI-AUS/rippo/blob/main/README.md"
 }

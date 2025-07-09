@@ -42,8 +42,7 @@ Imports:
 Suggests: 
     testthat (>= 3.0.0)
 Remotes:
-    https://github.com/AAGI-AUS/AAGIPalettes
-    https://github.com/AAGI-AUS/AAGIThemes
+    AAGI-AUS/AAGIThemes
 Config/roxyglobals/filename: generated-globals.R
 Config/roxyglobals/unique: FALSE
 Config/roxylint: list(linters = roxylint::tidy)

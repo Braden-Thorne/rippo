@@ -36,7 +36,7 @@ pak::pak("AAGI-AUS/rippo")
 options(o) # reset options
 ```
 
-## Running IPPO Shiny app
+## Using {rippo} for generating your project IPPO reports
 
 {rippo} includes a Shiny web app to make interfacing with the IPPO tables simpler.
 Once {rippo} is installed you can run the web app like so:
@@ -80,6 +80,37 @@ If stored as text (or other) data types, this may cause issues upon loading.
 - The links between outputs and background IP are expected to come as `Table X, Lines Y` where `X` is the relevant table and `Y` is a list corresponding to the rows in that table.
 By default the app will save this as a list of comma separated integers (eg. `Table 1, Lines 1,2,3,4,8`), however for the purposes of reading in files it will recognise collapsed lists using colons and hyphens (eg. `Table 1 Lines 1:4, 8` and `Table 1 Lines 1-4, 8`).
 Other ways of specifying this list will not be identified.
+
+## Using {rippo} for generating whole IPPO registers for reporting
+
+{rippo} includes two functions that are used to generate a unified Word document of the IPPO.
+
+1. `list_ippo_tables()` and
+2. `create_ippo_report()`.
+
+The former, `list_ippo_tables()`, creates a nested list object of all the IPPO tables from each project that is ordered by project code and Tables 1-5 (excluding any tables that do not have data entries).
+The latter, `create_ippo_report()`, takes the nested list of all IPPO tables and generates an MS Word document output for reporting to GRDC.
+This function allows for providing an existing MS Word document and appending values to it.
+This is useful where, as is the case for Curtin, an overarching IPPO register exists for AAGI-CU project IP and outputs that do not fall into service and support projects, upskilling and awareness projects or research and development activities.
+This overarching document can be read in and the remainder of the individual project IPPO details can be both read in and appended in project order and saved to the GRDC Box folder for reporting like so.
+
+```r 
+# for macOS with GRDC Box synced locally
+library(fs)
+sp <- "CU" # strategic partner for report
+R_drive <- "/Volumes/dmp/A-J/AAGI_CCDM_CBADA-GIBBEM-SE21982/"
+ippo_doc <- "~/Library/CloudStorage/Box-Box/AAGI-GRDC/AAGI IPPO Register/AAGI-CU-IPPO-register.docx"
+
+tl <- list_ippo_tables(
+   dir_path_in = path(R_drive, "Projects"),
+   sp = sp
+ )
+
+create_ippo_report(tables_list = tl,
+                   infile = ippo_doc,
+                   outfile = ippo_doc,
+                   sp = sp)
+```
 
 ## Contributions 
 

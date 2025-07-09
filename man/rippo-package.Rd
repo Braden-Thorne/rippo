@@ -12,6 +12,7 @@ Helper functions that ease preparing the AAGI IPPO register from creating third 
 Useful links:
 \itemize{
   \item \url{https://github.com/AAGI-AUS/rippo}
+  \item \url{https://aagi-aus.github.io/rippo/}
   \item Report bugs at \url{https://github.com/AAGI-AUS/rippo/issues}
 }
 

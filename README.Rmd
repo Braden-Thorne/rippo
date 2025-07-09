@@ -71,7 +71,7 @@ When uploading your existing IPPO register, be aware of the following restrictio
 
 - If the description of background IP in the imported document does not match *exactly* any of the descriptions in the catalog, it may be identified as a novel piece of IP.
 This can be confusing for packages where the name may be the same but they are identified as different due to discrepancies in the description.
-If you specify the name of the background IP in curly braces followed by a space at the start of the description (eg. `{BIPName} Description of BIP.`), the uploader will recognise this as a name for the background IP and will check that against the existing records as well.
+If you specify the name of the background IP in curly braces followed by a space at the start of the description (_e.g._, `{BIPName} Description of BIP.`), the uploader will recognise this as a name for the background IP and will check that against the existing records as well.
 We recommend avoiding the use of curly braces for other purposes in the background IP descriptions.
 
 - Dates are expected to be formatted as date objects in Excel.

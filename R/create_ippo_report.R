@@ -14,6 +14,7 @@
 #'  used. This can be used to add project IPPO details to an existing
 #'  \acronym{AAGI} IPPO register that has details that are already captured but
 #'  does not include service and support, research and development project IP.
+#'
 #' @examplesIf interactive()
 #'
 #'  # for macOS

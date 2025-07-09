@@ -47,13 +47,13 @@ run_IPPO_app()
 ```
 
 The app currently has the following features:
-- Add background IP by specifying the relevant details.
-- Add background IP from a catalog of frequently-used IP
-- Add outputs and specify links between outputs and background IP
-- Add correspondence related to outputs
-- Load an existing IPPO registry
-- Edit and delete existing entries
-- Export resulting IPPO in .xlsx format
+- Add background IP by specifying the relevant details,
+- Add background IP from a catalog of frequently-used IP,
+- Add outputs and specify links between outputs and background IP,
+- Add correspondence related to outputs,
+- Load an existing IPPO registry,
+- Edit and delete existing entries, and
+- Export resulting IPPO in .xlsx format.
 
 ### The background IP catalogue
 

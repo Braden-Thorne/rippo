@@ -17,7 +17,7 @@ Description: Helper functions that ease preparing the AAGI IPPO register
     from creating third party background IP tables to generating IPPO
     reports on a project by project basis.
 License: MIT + file LICENSE
-URL: https://github.com/AAGI-AUS/rippo
+URL: https://github.com/AAGI-AUS/rippo, https://aagi-aus.github.io/rippo/
 BugReports: https://github.com/AAGI-AUS/rippo/issues
 Depends:
     R (>= 4.0.0)

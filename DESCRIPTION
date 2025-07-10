@@ -23,24 +23,24 @@ Depends:
     R (>= 4.1.0)
 Imports:
     AAGIThemes,
-    bslib,
     cli,
     data.table,
     dplyr,
     flextable,
     fs,
     officer,
-    openxlsx,
     purrr,
     readxl,
     renv,
     rlang,
     shiny,
-    shinyWidgets,
     tibble,
     tools,
     withr
 Suggests: 
+    bslib,
+    openxlsx,
+    shinyWidgets,
     testthat (>= 3.0.0)
 Remotes:
     AAGI-AUS/AAGIThemes
@@ -50,7 +50,7 @@ Config/roxylint: list(linters = roxylint::tidy)
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Encoding: UTF-8
-Language: en_US
+Language: en-AU
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, roclets = c("collate", "namespace", "rd",
     "roxyglobals::global_roclet", "roxylint::roxylint",

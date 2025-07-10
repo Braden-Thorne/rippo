@@ -500,7 +500,7 @@ server <- function(input, output, session) {
         ))
     })
 
-    conditional_correspondance <- reactive({
+    conditional_correspondence <- reactive({
         if (nrow(db_OUT()) > 0) {
             card(
                 radioButtons(
@@ -686,7 +686,7 @@ server <- function(input, output, session) {
         }
     })
 
-    conditional_edit_correspondance <- reactive({
+    conditional_edit_correspondence <- reactive({
         if (nrow(db_SEN()) > 0) {
             layout_columns(
                 radioButtons(
@@ -715,7 +715,7 @@ server <- function(input, output, session) {
         layout_columns(
             conditionalPanel(
                 condition = "input.edit_radio==3",
-                conditional_edit_correspondance()
+                conditional_edit_correspondence()
             ),
             conditionalPanel(
                 condition = "input.edit_radio==2",
@@ -780,7 +780,7 @@ server <- function(input, output, session) {
           Enter any outputs that were shared with a third party.\n
           These should match to an entry in \"4 Project Outpts\".
         ",
-                conditional_correspondance(),
+                conditional_correspondence(),
                 col_widths = 12
             )
         } else {
@@ -793,7 +793,7 @@ server <- function(input, output, session) {
           radioButtons(
             "edit_radio",
             "Select option",
-            choices = list("BIP" = 1, "Outputs" = 2, "Correspondance" = 3),
+            choices = list("BIP" = 1, "Outputs" = 2, "Correspondence" = 3),
             selected = 1
           ),
           checkboxInput(
@@ -1418,7 +1418,7 @@ server <- function(input, output, session) {
             paste(
                 "AAGI-CU-",
                 input$code,
-                " - Support and Services IPPO Registrer.xlsx",
+                " - Support and Services IPPO Register.xlsx",
                 sep = ""
             )
         },

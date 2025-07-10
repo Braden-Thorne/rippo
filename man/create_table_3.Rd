@@ -7,7 +7,7 @@
 create_table_3(
   project_path = getwd(),
   outfile = "1 documentation/table_3.csv",
-  aagi_project_code = "aagi-all-sp-003",
+  aagi_project_code = "AAGI-ALL-SP-003",
   quarto = FALSE,
   digger = FALSE,
   asreml = FALSE

@@ -14,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.5.1 (2025-06-13)",
+  "runtimePlatform": "R version 4.5.0 (2025-04-11)",
   "author": [
     {
       "@type": "Person",
@@ -83,7 +83,7 @@
       "@type": "SoftwareApplication",
       "identifier": "R",
       "name": "R",
-      "version": ">= 4.0.0"
+      "version": ">= 4.1.0"
     },
     "2": {
       "@type": "SoftwareApplication",
@@ -165,18 +165,6 @@
     },
     "9": {
       "@type": "SoftwareApplication",
-      "identifier": "funspotr",
-      "name": "funspotr",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=funspotr"
-    },
-    "10": {
-      "@type": "SoftwareApplication",
       "identifier": "officer",
       "name": "officer",
       "provider": {
@@ -187,7 +175,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=officer"
     },
-    "11": {
+    "10": {
       "@type": "SoftwareApplication",
       "identifier": "openxlsx",
       "name": "openxlsx",
@@ -199,7 +187,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=openxlsx"
     },
-    "12": {
+    "11": {
       "@type": "SoftwareApplication",
       "identifier": "purrr",
       "name": "purrr",
@@ -211,7 +199,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=purrr"
     },
-    "13": {
+    "12": {
       "@type": "SoftwareApplication",
       "identifier": "readxl",
       "name": "readxl",
@@ -222,6 +210,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=readxl"
+    },
+    "13": {
+      "@type": "SoftwareApplication",
+      "identifier": "renv",
+      "name": "renv",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=renv"
     },
     "14": {
       "@type": "SoftwareApplication",
@@ -273,6 +273,11 @@
     },
     "18": {
       "@type": "SoftwareApplication",
+      "identifier": "tools",
+      "name": "tools"
+    },
+    "19": {
+      "@type": "SoftwareApplication",
       "identifier": "withr",
       "name": "withr",
       "provider": {
@@ -285,7 +290,8 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "273.984KB",
+  "fileSize": "279.77KB",
   "releaseNotes": "https://github.com/AAGI-AUS/rippo/blob/master/NEWS.md",
-  "readme": "https://github.com/AAGI-AUS/rippo/blob/main/README.md"
+  "readme": "https://github.com/AAGI-AUS/rippo/blob/main/README.md",
+  "contIntegration": "https://github.com/AAGI-AUS/rippo/actions/workflows/R-CMD-check.yaml"
 }

@@ -29,15 +29,16 @@ Imports:
     dplyr,
     flextable,
     fs,
-    funspotr,
     officer,
     openxlsx,
     purrr,
     readxl,
+    renv,
     rlang,
     shiny,
     shinyWidgets,
     tibble,
+    tools,
     withr
 Suggests: 
     testthat (>= 3.0.0)

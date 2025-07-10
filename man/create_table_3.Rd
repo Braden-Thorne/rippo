@@ -6,9 +6,10 @@
 \usage{
 create_table_3(
   project_path = getwd(),
-  file_path = "1 Documentation",
-  quarto = FALSE,
-  digger = FALSE
+  outfile = "1 documentation/table_3.csv",
+  aagi_project_code = "aagi-all-sp-003",
+  quarto = false,
+  digger = false
 )
 }
 \arguments{
@@ -16,25 +17,40 @@ create_table_3(
 tables for, defaults to the current working directory and recurses into
 subfolders.}
 
-\item{file_path}{Character string that provides the file path to the
-directory where the table will be saved. Defaults to the current project's
-\dQuote{1 Documentation} directory.}
+\item{outfile}{Character string that provides the file name and full path to
+the directory where the table will be saved. Defaults to the current
+project's \dQuote{1 Documentation} directory with a filename of
+\dQuote{table_3.csv}.}
 
-\item{quarto}{Boolean cite the \acronym{AAGI} Quarto template? Defaults to
+\item{aagi_project_code}{The \acronym{AAGI} project code to be inserted into
+the table.  Defaults to the current Service and Support project code within
+the \acronym{AAGI} project.  Note that this is NOT the project being
+serviced but the code within the \acronym{AAGI} project that is allocated
+for Service and Support, \emph{e.g.} "AAGI-ALL-SP-003".}
+
+\item{quarto}{\code{Boolean} cite the Quarto software? Defaults to \code{FALSE}.}
+
+\item{digger}{\code{Boolean} cite the \pkg{DiGGer} package? Defaults to \code{FALSE}.}
+
+\item{asreml}{\code{Boolean} cite the \pkg{ASReml-R} package? Defaults to
 \code{FALSE}.}
-
-\item{digger}{Boolean cite the \pkg{DiGGer} package? Defaults to \code{FALSE}.}
 }
 \value{
 An invisible `NULL, called for its side effects of writing a sheet
 into an Excel workbook file (the project's IPPO register) on the local disk.
 }
 \description{
-Create a Table of Third Party IP (Table 3) of the R packages and AAGI Quarto template used for an AAGI IPPO document
+Automatically recognises \R packages that are used in a project and generates
+Table 3 of the \acronym{IPPO} register.  Has allowances for
+non-\acronym{CRAN} packages, \pkg{ASReml-R} and \pkg{DiGGer} and also the
+Quarto software.
 }
 \examples{
-create_table_3()
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
+# after opening an RStudio project for a Service and Support Analysis
 
+create_table_3()
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 Other create IPPO: 

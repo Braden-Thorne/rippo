@@ -41,8 +41,9 @@ create_table_3 <- function(
     project_path = getwd(),
     outfile = "1 documentation/table_3.csv",
     aagi_project_code = "aagi-all-sp-003",
-    quarto = false,
-    digger = false
+    quarto = FALSE,
+    digger = FALSE,
+    asreml = FALSE
 ) {
     # check if the path is a valid directory
     if (!dir.exists(project_path)) {

@@ -33,7 +33,7 @@
 #'
 #' @family create IPPO
 #'
-#' @author Zhanglong Cao, \email{zhanglong.cao@@curtin.edu.au} and Adam H.
+#' @author Zhanglong Cao, \email{zhanglong.cao@@curtin.edu.au}, and Adam H.
 #' Sparks, \email{adam.sparks@@curtin.edu.au}
 #' @export
 

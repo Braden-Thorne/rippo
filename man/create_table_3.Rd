@@ -57,7 +57,7 @@ Other create IPPO:
 \code{\link{run_IPPO_app}()}
 }
 \author{
-Zhanglong Cao, \email{zhanglong.cao@curtin.edu.au} and Adam H.
+Zhanglong Cao, \email{zhanglong.cao@curtin.edu.au}, and Adam H.
 Sparks, \email{adam.sparks@curtin.edu.au}
 }
 \concept{create IPPO}

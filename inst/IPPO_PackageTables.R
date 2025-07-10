@@ -26,7 +26,7 @@ db_Quarto <- data.frame(
     Package = "Quarto",
     Author = "Posit Software, PBC",
     Description = "Quarto, open-source tools for scientific and technical publishing",
-    License = "version 1.3 (and earlier) is licensed under the GNU GPL v2. Quarto version 1.4 is licensed under the MIT"
+    License = "version 1.3 (and earlier) is licensed under the GNU GPL v2. Quarto version 1.4 is licensed under the MIT licence."
 )
 
 
@@ -57,8 +57,8 @@ top2rows <- data.frame(
     ),
     `Date made available to Project` = as.Date(c("2023-07-18", "2023-07-18")),
     `Name of party making Third Party IP available (if not the owner(s))` = c(
-        "CU",
-        "CU"
+        "",
+        ""
     ),
     `Arrangements applicable to the provision of Third Party IP for the Project` = c(
         "R is made freely available for use and redistribution under the Free Software Foundation’s GNU General Public Licence v2.0.",

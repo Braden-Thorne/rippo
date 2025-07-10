@@ -36,7 +36,7 @@ for Service and Support, \emph{e.g.} "AAGI-ALL-SP-003".}
 \code{FALSE}.}
 }
 \value{
-An invisible `NULL, called for its side effects of writing a sheet
+An invisible \code{NULL}, called for its side effects of writing a sheet
 into an Excel workbook file (the project's IPPO register) on the local disk.
 }
 \description{

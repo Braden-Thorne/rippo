@@ -2,7 +2,7 @@
 #'
 #' Automatically recognises \R packages that are used in a project and generates
 #'  Table 3 of the \acronym{IPPO} register.  Has allowances for
-#'  non-\acronym{CRAN} packages, \pkg{ASReml-R} and \pkg{DiGGer} and also the 
+#'  non-\acronym{CRAN} packages, \pkg{ASReml-R} and \pkg{DiGGer} and also the
 #'  Quarto software.
 #'
 #' @param project_path The path to the directory of the project to generate the
@@ -12,10 +12,10 @@
 #'  the directory where the table will be saved. Defaults to the current
 #'  project's \dQuote{1 Documentation} directory with a filename of
 #'  \dQuote{table_3.csv}.
-#' @param aagi_project_code The \acronym{AAGI} project code to be inserted into 
-#'  the table.  Defaults to the current Service and Support project code within 
-#'  the \acronym{AAGI} project.  Note that this is NOT the project being 
-#'  serviced but the code within the \acronym{AAGI} project that is allocated 
+#' @param aagi_project_code The \acronym{AAGI} project code to be inserted into
+#'  the table.  Defaults to the current Service and Support project code within
+#'  the \acronym{AAGI} project.  Note that this is NOT the project being
+#'  serviced but the code within the \acronym{AAGI} project that is allocated
 #'  for Service and Support, _e.g._ "AAGI-ALL-SP-003".
 #' @param quarto Logical, whether to site the \acronym{AAGI} Quarto template.
 #' Defaults to `FALSE`.
@@ -28,7 +28,7 @@
 #'
 #' create_table_3()
 #'
-#' @return An invisible `NULL, called for its side effects of writing a sheet
+#' @return An invisible `NULL`, called for its side effects of writing a sheet
 #'  into an Excel workbook file (the project's IPPO register) on the local disk.
 #'
 #' @family create IPPO

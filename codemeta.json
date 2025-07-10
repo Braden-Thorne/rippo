@@ -290,7 +290,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "279.61KB",
+  "fileSize": "279.374KB",
   "releaseNotes": "https://github.com/AAGI-AUS/rippo/blob/master/NEWS.md",
   "readme": "https://github.com/AAGI-AUS/rippo/blob/main/README.md",
   "contIntegration": "https://github.com/AAGI-AUS/rippo/actions/workflows/R-CMD-check.yaml"

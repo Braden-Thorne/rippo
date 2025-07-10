@@ -2,10 +2,7 @@
 % Please edit documentation in R/list_ippo_tables.R
 \name{list_ippo_tables}
 \alias{list_ippo_tables}
-\title{Create IPPO tables list
-Traverses directories and imports IPPO register Excel(TM) workbook files and
-creates a list of tables corresponding to Tables 1-5 in the \acronym{AAGI}
-\acronym{IPPO} register for all AAGI-CU Service and Support projects.}
+\title{Create IPPO tables list}
 \usage{
 list_ippo_tables(dir_path_in, sp)
 }
@@ -23,7 +20,6 @@ A \code{list} object that contains tables of IPPO registers organised by
 AAGI Service and Support project or AAGI R&D Activity.
 }
 \description{
-Create IPPO tables list
 Traverses directories and imports IPPO register Excel(TM) workbook files and
 creates a list of tables corresponding to Tables 1-5 in the \acronym{AAGI}
 \acronym{IPPO} register for all AAGI-CU Service and Support projects.

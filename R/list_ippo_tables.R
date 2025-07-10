@@ -1,4 +1,5 @@
 #' Create IPPO tables list
+#'
 #' Traverses directories and imports IPPO register Excel(TM) workbook files and
 #'  creates a list of tables corresponding to Tables 1-5 in the \acronym{AAGI}
 #'  \acronym{IPPO} register for all AAGI-CU Service and Support projects.
@@ -40,16 +41,16 @@ list_ippo_tables <- function(dir_path_in, sp) {
     )
 
     # create a list of completed projects that are no longer actively supported
-    completed <- fs::dir_ls(path(dir_path_in, "02 Archived Completed"))
+    completed <- fs::dir_ls(fs::path(dir_path_in, "02 Archived Completed"))
 
     # create a list of active projects and filter out non-proj dirs
-    active <- fs::dir_ls(path(dir_path_in))
+    active <- fs::dir_ls(fs::path(dir_path_in))
     active <- active[!grepl("Projects/\\d{2} ", active)]
     active <- active[!grepl("Projects/AAGI", active, fixed = TRUE)]
     active <- active[!grepl("Projects/RiskWise Program", active, fixed = TRUE)]
 
     # point to the IPPO registers
-    ippo_paths <- file.path(c(completed, active), "/1 Documentation/")
+    ippo_paths <- fs::path(c(completed, active), "/1 Documentation/")
     ippo_registers <- lapply(
         X = ippo_paths,
         FUN = fs::dir_ls,

@@ -1,4 +1,4 @@
-#' Create a Table of Third Party IP (Table 3) of the R packages and AAGI Quarto template used for an AAGI IPPO document
+#' Create a Table of Third Party IP (Table 3) of the R packages used for an AAGI IPPO document
 #'
 #' Automatically recognises \R packages that are used in a project and generates
 #'  Table 3 of the \acronym{IPPO} register.  Has allowances for
@@ -17,8 +17,6 @@
 #'  the \acronym{AAGI} project.  Note that this is NOT the project being
 #'  serviced but the code within the \acronym{AAGI} project that is allocated
 #'  for Service and Support, _e.g._ "AAGI-ALL-SP-003".
-#' @param quarto Logical, whether to site the \acronym{AAGI} Quarto template.
-#' Defaults to `FALSE`.
 #' @param quarto `Boolean` cite the Quarto software? Defaults to `FALSE`.
 #' @param digger `Boolean` cite the \pkg{DiGGer} package? Defaults to `FALSE`.
 #' @param asreml `Boolean` cite the \pkg{ASReml-R} package? Defaults to

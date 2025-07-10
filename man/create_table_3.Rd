@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_table_3.R
 \name{create_table_3}
 \alias{create_table_3}
-\title{Create a Table of Third Party IP (Table 3) of the R packages and AAGI Quarto template used for an AAGI IPPO document}
+\title{Create a Table of Third Party IP (Table 3) of the R packages used for an AAGI IPPO document}
 \usage{
 create_table_3(
   project_path = getwd(),

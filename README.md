@@ -74,7 +74,7 @@ We recommend avoiding the use of curly braces for other purposes in the backgrou
 If stored as text (or other) data types, this may cause issues upon loading.
 
 - The links between outputs and background IP are expected to come as `Table X, Lines Y` where `X` is the relevant table and `Y` is a list corresponding to the rows in that table.
-By default the app will save this as a list of comma separated integers (eg. `Table 1, Lines 1,2,3,4,8`), however for the purposes of reading in files it will recognise collapsed lists using colons and hyphens (_e.g._, `Table 1 Lines 1:4, 8` and `Table 1 Lines 1-4, 8`).
+By default the app will save this as a list of comma separated integers (_e.g._, `Table 1, Lines 1,2,3,4,8`), however for the purposes of reading in files it will recognise collapsed lists using colons and hyphens (_e.g._, `Table 1 Lines 1:4, 8` and `Table 1 Lines 1-4, 8`).
 Other ways of specifying this list will not be identified.
 
 ## Using {rippo} for generating whole IPPO registers for reporting

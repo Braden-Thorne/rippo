@@ -41,6 +41,7 @@ run_IPPO_app()
 ```
 
 The app currently has the following features:
+
 - Add background IP by specifying the relevant details,
 - Add background IP from a catalog of frequently-used IP,
 - Add outputs and specify links between outputs and background IP,
@@ -54,6 +55,7 @@ The app currently has the following features:
 The current catalog contains a selection of IP from a small number of AAGI projects.
 We do not expect this is a complete list of the frequently used IP.
 If you believe there is IP that is used frequently by yourself and others and should be added to the catalog, submit an issue with either:
+
 - the package name and relevant language, or
 - the relevant information for the IPPO table.
 

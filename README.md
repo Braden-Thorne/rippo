@@ -14,9 +14,27 @@ output: github_document
 
 The goal of {rippo} is to ease data entry and tracking of AAGI-CU Intellectual Property and Project Outputs (IPPO) for reporting purposes.
 
-## Installation
+## Installation instructions
 
-You can install the development version of {rippo} like so:
+{rippo} is available through the [R-Universe](https://r-universe.dev/search) with pre-built binaries (this is the easy way).
+
+To get started:
+
+### Enable this universe
+
+```r
+options(repos = c(
+    maelle = 'https://aagi-aus.r-universe.dev',
+    CRAN = 'https://cloud.r-project.org'))
+```
+
+### Install
+
+```r
+install.packages("rippo")
+```
+
+### The hard(er) way
 
 ```r
 o <- options() # store default options

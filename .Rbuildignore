@@ -10,3 +10,6 @@
 
 # flir files
 ^flir$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$

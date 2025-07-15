@@ -14,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.3.3 (2024-02-29)",
+  "runtimePlatform": "R version 4.5.1 (2025-06-13)",
   "author": [
     {
       "@type": "Person",
@@ -41,7 +41,7 @@
   "copyrightHolder": [
     {
       "@type": "Organization",
-      "name": "Curtin University of Technology"
+      "name": "Curtin University"
     },
     {
       "@type": "Organization",
@@ -290,7 +290,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "279.611KB",
+  "fileSize": "279.583KB",
   "releaseNotes": "https://github.com/AAGI-AUS/rippo/blob/master/NEWS.md",
   "readme": "https://github.com/AAGI-AUS/rippo/blob/main/README.md",
   "contIntegration": "https://github.com/AAGI-AUS/rippo/actions/workflows/R-CMD-check.yaml"

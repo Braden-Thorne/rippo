@@ -128,7 +128,7 @@ create_ippo_report(tables_list = tl,
 
 ## Contributions 
 
-All contributions are appreciated, but please make sure to follow the [Contribution Guidelines](.github/CONTRIBUTING.md).
+All contributions are appreciated, but please make sure to follow the [Contribution Guidelines](CONTRIBUTING.md).
 
 ### Code of Conduct
 

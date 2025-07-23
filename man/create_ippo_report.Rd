@@ -19,7 +19,7 @@ generating the report, can be full name or two letter string used by
 written. The output file is an MS Word(TM) document that follows
 \acronym{AAGI} style guidelines.}
 
-\item{infile}{An optional filenmae including the file path where an existing
+\item{infile}{An optional filenamae providing the file path to an existing
 IPPO report is to be read from. If not provided, a default empty template is
 used. This can be used to add project IPPO details to an existing
 \acronym{AAGI} IPPO register that has details that are already captured but

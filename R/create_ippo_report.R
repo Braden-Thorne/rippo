@@ -9,7 +9,7 @@
 #' @param outfile A filename including the file path where the file is to be
 #'  written. The output file is an MS Word(TM) document that follows
 #'  \acronym{AAGI} style guidelines.
-#' @param infile An optional filenmae including the file path where an existing
+#' @param infile An optional filenamae providing the file path to an existing
 #'  IPPO report is to be read from. If not provided, a default empty template is
 #'  used. This can be used to add project IPPO details to an existing
 #'  \acronym{AAGI} IPPO register that has details that are already captured but

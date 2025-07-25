@@ -50,18 +50,14 @@ create_ippo_report <- function(tables_list, sp, infile, outfile) {
 
     ippo_list <- tables_list$ippo_tables
 
-    if (missing(infile)) {
-        # import base AAGI IPPO Word template with logos, etc.
-        doc <- officer::read_docx(
-            path = system.file(
-                "assets/ippo_report.docx",
-                package = "rippo",
-                mustWork = TRUE
-            )
+    # import base AAGI IPPO Word template with logos, etc.
+    doc <- officer::read_docx(
+        path = system.file(
+            "assets/ippo_report.docx",
+            package = "rippo",
+            mustWork = TRUE
         )
-    } else {
-        doc <- infile
-    }
+    )
 
     # define global settings for flextable
     flextable::set_flextable_defaults(
@@ -70,7 +66,7 @@ create_ippo_report <- function(tables_list, sp, infile, outfile) {
         table.layout = "autofit",
         fmt_date = "%Y-%m-%d",
         fmt_datetime = "%Y-%m-%d",
-        font.size = 10
+        font.size = 10L
     )
 
     # Add title of register with strategic partner named

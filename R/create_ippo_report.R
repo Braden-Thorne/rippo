@@ -26,15 +26,16 @@
 #'    sp = sp
 #'  )
 #' create_ippo_report(tables_list = tl,
-#'                    outfile = "~/AAGI-CU-IPPO-register.docx",
-#'                    sp = sp)
+#'                    sp = sp,
+#'                    outfile = "~/AAGI-CU-IPPO-register.docx"
+#'                    )
 #'
 #' @returns An invisible `NULL`, called for its side-effects of generating an
 #'  MS Word(TM) document with tables that report each project's IPPO.
 #' @family reporting
 #' @export
 
-create_ippo_report <- function(tables_list, sp, outfile, infile) {
+create_ippo_report <- function(tables_list, sp, infile, outfile) {
     rlang::arg_match(
         arg = sp,
         values = c(

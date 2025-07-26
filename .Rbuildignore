@@ -12,4 +12,5 @@
 ^flir$
 ^_pkgdown\.yml$
 ^docs$
-^pkgdown$
+pkgdown$
+^CONTRIBUTING\.md$

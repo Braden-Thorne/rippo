@@ -4,7 +4,7 @@
 \alias{create_ippo_report}
 \title{Create an IPPO register report for GRDC}
 \usage{
-create_ippo_report(tables_list, sp, infile, outfile)
+create_ippo_report(tables_list, sp, outfile)
 }
 \arguments{
 \item{tables_list}{A nested list of IPPO register data tables for
@@ -14,12 +14,6 @@ reporting generated with \code{list_ippo_tables()}.}
 \item{sp}{A character string providing the AAGI strategic partner that is
 generating the report, can be full name or two letter string used by
 \acronym{AAGI}.}
-
-\item{infile}{An optional filename providing the file path to an existing
-IPPO report is to be read from. If not provided, a default empty template is
-used. This can be used to add project IPPO details to an existing
-\acronym{AAGI} IPPO register that has details that are already captured but
-does not include service and support, research and development project IP.}
 
 \item{outfile}{A filename including the file path where the file is to be
 written. The output file is an MS Word(TM) document that follows

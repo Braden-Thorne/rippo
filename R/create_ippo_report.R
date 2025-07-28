@@ -9,11 +9,6 @@
 #' @param outfile A filename including the file path where the file is to be
 #'  written. The output file is an MS Word(TM) document that follows
 #'  \acronym{AAGI} style guidelines.
-#' @param infile An optional filename providing the file path to an existing
-#'  IPPO report is to be read from. If not provided, a default empty template is
-#'  used. This can be used to add project IPPO details to an existing
-#'  \acronym{AAGI} IPPO register that has details that are already captured but
-#'  does not include service and support, research and development project IP.
 #'
 #' @examplesIf interactive()
 #'
@@ -35,7 +30,7 @@
 #' @family reporting
 #' @export
 
-create_ippo_report <- function(tables_list, sp, infile, outfile) {
+create_ippo_report <- function(tables_list, sp, outfile) {
     rlang::arg_match(
         arg = sp,
         values = c(

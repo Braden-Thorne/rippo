@@ -1,3 +1,13 @@
+# rippo 1.0.1
+
+## Bug fixes
+
+* Fixes bug when importing AAGI R&D projects
+
+## Minor changes
+
+* Removes unnecessary code from script in `inst` for generating an IPPO document
+
 # rippo 1.0.0
 
 ## Major changes

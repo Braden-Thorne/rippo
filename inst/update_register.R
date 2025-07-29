@@ -7,8 +7,6 @@ library(fs)
 sp <- "CU" # strategic partner for report
 R_drive <- "/Volumes/dmp/A-J/AAGI_CCDM_CBADA-GIBBEM-SE21982/"
 
-ippo_doc <- "~/Library/CloudStorage/Box-Box/AAGI-GRDC/AAGI IPPO Register/AAGI-CU-IPPO Register.docx"
-
 tl <- list_ippo_tables(
     dir_path_in = path(R_drive, "Projects"),
     sp = sp

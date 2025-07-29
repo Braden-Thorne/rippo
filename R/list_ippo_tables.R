@@ -46,6 +46,10 @@ list_ippo_tables <- function(dir_path_in, sp) {
     # create a list of active projects and filter out non-proj dirs
     active <- fs::dir_ls(fs::path(dir_path_in))
     active <- active[!grepl("Projects/\\d{2} ", active)]
+    active <- active[
+        !grepl("Projects/AAGI student files", active, fixed = TRUE)
+    ]
+    active <- active[!grepl("Projects/AAGI_informatics", active, fixed = TRUE)]
     active <- active[!grepl("Projects/RiskWise Program", active, fixed = TRUE)]
 
     # point to the IPPO registers

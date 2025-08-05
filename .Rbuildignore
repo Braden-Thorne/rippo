@@ -5,3 +5,12 @@
 ^\.Rproj\.user$
 ^CODE_OF_CONDUCT\.md$
 ^codemeta\.json$
+^\.github$
+^air\.toml$
+
+# flir files
+^flir$
+^_pkgdown\.yml$
+^docs$
+pkgdown$
+^CONTRIBUTING\.md$

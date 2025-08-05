@@ -11,10 +11,15 @@ An invisible \code{NULL}, called for its side-effects of launching a
 Shiny application.
 }
 \description{
-Runs a shiny app where a user can build, edit and download an IPPO registry.
+Runs a Shiny app where a user can build, edit and download an IPPO registry.
 }
 \examples{
 \dontrun{
 run_IPPO_app()
 }
 }
+\seealso{
+Other create IPPO: 
+\code{\link{create_table_3}()}
+}
+\concept{create IPPO}

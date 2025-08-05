@@ -6,12 +6,13 @@
 \alias{rippo-package}
 \title{rippo: Simplify AAGI-CU IPPO Register Updates}
 \description{
-Helper functions that ease preparing the AAGI-CU IPPO register.
+Helper functions that ease preparing the AAGI IPPO register from creating third party background IP tables to generating IPPO reports on a project by project basis.
 }
 \seealso{
 Useful links:
 \itemize{
   \item \url{https://github.com/AAGI-AUS/rippo}
+  \item \url{https://aagi-aus.github.io/rippo/}
   \item Report bugs at \url{https://github.com/AAGI-AUS/rippo/issues}
 }
 
@@ -27,8 +28,8 @@ Authors:
 
 Other contributors:
 \itemize{
-  \item Curtin University of Technology (Provided support through Adam Sparks, Zhanglon Cao and Braden Thorne's time.) [copyright holder]
-  \item Grains Research and Development Corporation (GRDC Project CUR2210-005OPX (AAGI-CU)) [funder, copyright holder]
+  \item Curtin University (\href{https://ror.org/02n415q13}{ROR}) (Provided support through Adam Sparks's, Zhanglong Cao's and Braden Thorne's time.) [funder, copyright holder]
+  \item Grains Research and Development Corporation (\href{https://ror.org/02xwr1996}{ROR}) (GRDC Project CUR2210-005OPX (AAGI-CU)) [funder, copyright holder]
 }
 
 }

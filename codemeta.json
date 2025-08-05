@@ -2,12 +2,13 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "rippo",
-  "description": "Helper functions that ease preparing the AAGI-CU IPPO register.",
+  "description": "Helper functions that ease preparing the AAGI IPPO register from creating third party background IP tables to generating IPPO reports on a project by project basis.",
   "name": "rippo: Simplify AAGI-CU IPPO Register Updates",
+  "relatedLink": "https://aagi-aus.github.io/rippo/",
   "codeRepository": "https://github.com/AAGI-AUS/rippo",
   "issueTracker": "https://github.com/AAGI-AUS/rippo/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.0.0.9000",
+  "version": "1.0.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -40,7 +41,7 @@
   "copyrightHolder": [
     {
       "@type": "Organization",
-      "name": "Curtin University of Technology"
+      "name": "Curtin University"
     },
     {
       "@type": "Organization",
@@ -48,6 +49,10 @@
     }
   ],
   "funder": [
+    {
+      "@type": "Organization",
+      "name": "Curtin University"
+    },
     {
       "@type": "Organization",
       "name": "Grains Research and Development Corporation"
@@ -63,6 +68,42 @@
     }
   ],
   "softwareSuggestions": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "bslib",
+      "name": "bslib",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=bslib"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "openxlsx",
+      "name": "openxlsx",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=openxlsx"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "shinyWidgets",
+      "name": "shinyWidgets",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=shinyWidgets"
+    },
     {
       "@type": "SoftwareApplication",
       "identifier": "testthat",
@@ -82,19 +123,13 @@
       "@type": "SoftwareApplication",
       "identifier": "R",
       "name": "R",
-      "version": ">= 4.0.0"
+      "version": ">= 4.1.0"
     },
     "2": {
       "@type": "SoftwareApplication",
-      "identifier": "bslib",
-      "name": "bslib",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=bslib"
+      "identifier": "AAGIThemes",
+      "name": "AAGIThemes",
+      "sameAs": "https://github.com/AAGI-AUS/AAGIThemes"
     },
     "3": {
       "@type": "SoftwareApplication",
@@ -158,18 +193,6 @@
     },
     "8": {
       "@type": "SoftwareApplication",
-      "identifier": "funspotr",
-      "name": "funspotr",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=funspotr"
-    },
-    "9": {
-      "@type": "SoftwareApplication",
       "identifier": "officer",
       "name": "officer",
       "provider": {
@@ -180,19 +203,19 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=officer"
     },
-    "10": {
+    "9": {
       "@type": "SoftwareApplication",
-      "identifier": "openxlsx",
-      "name": "openxlsx",
+      "identifier": "purrr",
+      "name": "purrr",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=openxlsx"
+      "sameAs": "https://CRAN.R-project.org/package=purrr"
     },
-    "11": {
+    "10": {
       "@type": "SoftwareApplication",
       "identifier": "readxl",
       "name": "readxl",
@@ -204,7 +227,31 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=readxl"
     },
+    "11": {
+      "@type": "SoftwareApplication",
+      "identifier": "renv",
+      "name": "renv",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=renv"
+    },
     "12": {
+      "@type": "SoftwareApplication",
+      "identifier": "rlang",
+      "name": "rlang",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=rlang"
+    },
+    "13": {
       "@type": "SoftwareApplication",
       "identifier": "shiny",
       "name": "shiny",
@@ -215,18 +262,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=shiny"
-    },
-    "13": {
-      "@type": "SoftwareApplication",
-      "identifier": "shinyWidgets",
-      "name": "shinyWidgets",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=shinyWidgets"
     },
     "14": {
       "@type": "SoftwareApplication",
@@ -242,6 +277,11 @@
     },
     "15": {
       "@type": "SoftwareApplication",
+      "identifier": "tools",
+      "name": "tools"
+    },
+    "16": {
+      "@type": "SoftwareApplication",
       "identifier": "withr",
       "name": "withr",
       "provider": {
@@ -254,7 +294,10 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "0KB",
-  "releaseNotes": "https://github.com/AAGI-AUS/rippo/blob/master/NEWS.md",
-  "readme": "https://github.com/AAGI-AUS/rippo/blob/main/README.md"
+  "applicationCategory": "Tools",
+  "isPartOf": "https://grdc.com.au/research/partnerships-and-initiatives/strategic-partnerships/aagi",
+  "fileSize": "279.963KB",
+  "releaseNotes": "https://github.com/AAGI-AUS/rippo/blob/main/NEWS.md",
+  "readme": "https://github.com/AAGI-AUS/rippo/blob/main/README.md",
+  "contIntegration": "https://github.com/AAGI-AUS/rippo/actions/workflows/R-CMD-check.yaml"
 }
